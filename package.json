@@ -12,11 +12,15 @@
     "build-storybook": "storybook build"
   },
   "dependencies": {
+    "@react-three/drei": "^10.4.2",
+    "@react-three/fiber": "^9.1.4",
     "@types/react-router-dom": "^5.3.3",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
+    "react-helmet-async": "^2.0.5",
     "react-router-dom": "^7.6.3",
-    "styled-components": "^6.1.19"
+    "styled-components": "^6.1.19",
+    "three": "^0.178.0"
   },
   "devDependencies": {
     "@chromatic-com/storybook": "^4.0.1",

@@ -1,0 +1,93 @@
+:root {
+  --color-primary: #3478f6;
+  --color-bg: #fff;
+  --color-border: #e5e7eb;
+  --color-text: #232f3e;
+  --color-muted: #888;
+  --color-accent: #ff3b30;
+  --font-main: 'Pretendard-Regular', sans-serif;
+  --radius-lg: 24px;
+  --radius-md: 12px;
+  --radius-sm: 8px;
+  --shadow-main: 0 4px 24px 0 rgba(0,0,0,0.10);
+  --shadow-light: 0 2px 8px 0 rgba(0,0,0,0.03);
+}
+
+.commonBox {
+  background: var(--color-bg);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-light);
+  padding: 12px 18px 10px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 56px;
+  font-family: var(--font-main);
+}
+
+.commonInput {
+  width: 100%;
+  border: none;
+  outline: none;
+  font-size: 15px;
+  padding: 0;
+  background: transparent;
+  color: var(--color-text);
+  font-family: var(--font-main);
+  font-weight: 700;
+}
+
+.commonInput::placeholder {
+  color: #bbb;
+  font-size: 15px;
+}
+
+.commonLabel {
+  font-size: 13px;
+  color: var(--color-muted);
+  margin-bottom: 4px;
+  font-weight: 500;
+  font-family: var(--font-main);
+}
+
+.commonButton {
+  background: var(--color-bg);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size: 1.08rem;
+  font-weight: 700;
+  padding: 0 32px;
+  height: 48px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  box-shadow: var(--shadow-light);
+  font-family: var(--font-main);
+  transition: background 0.15s;
+}
+
+.commonButton:hover {
+  background: #f5f8ff;
+}
+
+.commonIcon {
+  font-size: 20px;
+  color: var(--color-text);
+  margin-right: 8px;
+  display: flex;
+  align-items: center;
+}
+
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  font-family: 'Pretendard-Regular', sans-serif;
+} 

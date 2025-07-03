@@ -1,4 +1,4 @@
 export interface Category {
-  icon: string;
+  icon: React.ReactNode;
   label: string;
 } 

@@ -13,10 +13,18 @@ export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
+      '@app': path.resolve(__dirname, 'src/app'),
+      '@features': path.resolve(__dirname, 'src/features'),
       '@components': path.resolve(__dirname, 'src/components'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components/common': path.resolve(__dirname, 'src/components/common'),
+      '@components/layout': path.resolve(__dirname, 'src/components/layout'),
+      '@components/navigation': path.resolve(__dirname, 'src/components/navigation'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
+      '@constants': path.resolve(__dirname, 'src/constants'),
       '@types': path.resolve(__dirname, 'src/types'),
-      '@pages': path.resolve(__dirname, 'src/pages')
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@styles': path.resolve(__dirname, 'src/styles')
     }
   },
   test: {

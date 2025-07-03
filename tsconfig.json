@@ -17,10 +17,18 @@
     "jsx": "react-jsx",
     "baseUrl": "src",
     "paths": {
+      "@app/*": ["app/*"],
+      "@features/*": ["features/*"],
       "@components/*": ["components/*"],
-      "@assets/*": ["assets/*"],
+      "@components/common/*": ["components/common/*"],
+      "@components/layout/*": ["components/layout/*"],
+      "@components/navigation/*": ["components/navigation/*"],
+      "@hooks/*": ["hooks/*"],
+      "@utils/*": ["utils/*"],
+      "@constants/*": ["constants/*"],
       "@types/*": ["types/*"],
-      "@pages/*": ["pages/*"]
+      "@assets/*": ["assets/*"],
+      "@styles/*": ["styles/*"]
     }
   },
   "include": ["src"],

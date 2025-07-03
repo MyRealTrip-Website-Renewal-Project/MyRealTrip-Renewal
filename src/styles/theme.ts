@@ -1,17 +1,21 @@
-export const theme = {
+export interface ThemeType {
   color: {
-    primary: '#2196f3',
-    secondary: '#1976d2',
-    gray: '#f5f6f7',
-    text: '#222',
-    placeholder: '#bdbdbd',
-    danger: '#e74c3c',
+    primary: string;
+    white: string;
+    gray: string;
+    text: string;
+    placeholder: string;
+  };
+  borderRadius: string;
+}
+
+export const theme: ThemeType = {
+  color: {
+    primary: '#3478f6',
     white: '#fff',
-    yellow: '#ffcb05',
-    yellowHover: '#fffbe6',
-    border: '#eee',
+    gray: '#f7f8fa',
+    text: '#232f3e',
+    placeholder: '#bdbdbd',
   },
   borderRadius: '8px',
-};
-
-export type ThemeType = typeof theme; 
+}; 

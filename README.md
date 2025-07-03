@@ -1,69 +1,90 @@
-# React + TypeScript + Vite
+# MyRealTrip Renewal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+마이리얼트립 리뉴얼 프로젝트  
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🗂️ 시스템 폴더 구조
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```
+MyRealTrip-Renewal/
+├── public/                   # 정적 파일 (favicon, robots.txt 등)
+├── src/
+│   ├── app/                  # 진입점(index.tsx), App, Provider, 라우팅 등
+│   ├── assets/               # 이미지, SVG 등 정적 리소스
+│   │   └── img/              # 각종 이미지 파일
+│   ├── components/
+│   │   ├── common/           # 공통 컴포넌트 (아이콘 등)
+│   │   └── layout/           # 레이아웃 컴포넌트 (Header 등)
+│   ├── features/             # 도메인별 페이지/비즈니스 로직/컴포넌트
+│   │   ├── about/            # About 페이지
+│   │   ├── home/             # Home 페이지
+│   │   ├── mainVisual/       # 메인 비주얼, 검색바 등
+│   │   └── splash/           # 스플래시 관련 컴포넌트
+│   ├── stories/              # Storybook 스토리/테스트용 컴포넌트
+│   ├── styles/               # 글로벌/테마 CSS, 폰트 등
+│   └── types/                # 타입 정의 (category, subtab 등)
+├── .storybook/               # Storybook 설정
+├── node_modules/             # npm 패키지
+├── package.json              # 프로젝트 메타/의존성/스크립트
+├── tsconfig.json             # TypeScript 설정
+├── vite.config.ts            # Vite 설정
+├── README.md                 # 프로젝트 설명서
+└── ...                       # 기타 설정/빌드 파일
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 🏗️ 폴더별 역할
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- **public/**: 정적 파일(HTML, favicon 등)
+- **src/app/**: 앱 진입점, 라우팅, Provider 등
+- **src/assets/**: 이미지, SVG 등 정적 리소스
+- **src/components/common/**: 공통 아이콘, 버튼 등 재사용 컴포넌트
+- **src/components/layout/**: Header 등 레이아웃 관련 컴포넌트
+- **src/features/**: 도메인별 페이지/비즈니스 로직/컴포넌트/스타일
+- **src/stories/**: Storybook 스토리, 테스트용 컴포넌트
+- **src/styles/**: 글로벌 CSS, 테마, 폰트
+- **src/types/**: 타입스크립트 타입 정의
+- **.storybook/**: Storybook 설정
+- **package.json, tsconfig.json, vite.config.ts**: 프로젝트 설정 파일
+
+---
+
+## 🚀 주요 기능 및 개선 내역
+
+- **UI/UX 고도화**: 픽셀 퍼펙트, 반응형, SVG 아이콘 통일, 폰트 통일 등
+- **코드 구조 개선**: 대규모 서비스에 적합한 폴더 구조, 공통화, 중복 제거
+- **반응형 처리**: 브레이크포인트별 레이아웃 자동 전환
+- **시큐어 코딩/보안**: 입력값 sanitize, 버튼 연타 방지, autocomplete="off" 등
+- **코드 품질**: 타입스크립트, ESLint, Prettier, Storybook, Jest
+
+---
+
+## 🛠️ 설치 및 실행
+
+```bash
+npm install
+npm run dev
 ```
+
+---
+
+## 🌐 배포/호스팅
+
+- 대기기
+
+---
+
+## 🔒 보안/시큐어 코딩 적용 내역
+
+- 입력값 sanitize(특수문자 < > " ' 제거)
+- 검색 버튼 연타 방지(loading state, disabled)
+- 콘솔에 민감정보 출력 금지
+- autocomplete="off" 적용
+
+---
+
+## 📦 기술 스택
+
+- React, TypeScript, Vite, CSS Modules, Pretendard, Storybook, Jest, ESLint, Prettier

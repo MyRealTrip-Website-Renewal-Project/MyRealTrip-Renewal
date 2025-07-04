@@ -12,7 +12,13 @@ const CategoryTabs = React.memo(function CategoryTabs({ categories }: CategoryTa
       <ul className={styles.categoryTabsList}>
         {categories.map((category, index) => (
           <li key={index} className={styles.categoryTabItem}>
-            <button className={styles.categoryTabButton}>
+            <button
+              className={
+                category.selected
+                  ? `${styles.categoryTabButton} ${styles.active}`
+                  : styles.categoryTabButton
+              }
+            >
               <span className={styles.categoryIcon}>{category.icon}</span>
               <span className={styles.categoryLabel}>{category.label}</span>
             </button>

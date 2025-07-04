@@ -1,6 +1,9 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import MainVisual from '@features/mainVisual/MainVisual';
+import PromotionSection from '../../components/common/PromotionSection';
+import HotelSectionContainer from '../../components/common/HotelSectionContainer';
+import SpecialHotelSectionContainer from '../../components/common/SpecialHotelSectionContainer';
 
 export default React.memo(function Home() {
   return (
@@ -16,6 +19,9 @@ export default React.memo(function Home() {
         <MainVisual 
           backgroundImage="/src/assets/img/76924789273a48aadae2ee510514eea924c63067.webp"
         />
+        <PromotionSection />
+        <HotelSectionContainer />
+        <SpecialHotelSectionContainer />
       </main>
     </>
   );

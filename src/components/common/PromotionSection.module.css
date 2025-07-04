@@ -1,0 +1,96 @@
+.section {
+  width: 100%;
+  max-width: 1200px;
+  margin: 48px auto 0 auto;
+  padding: 0 0 0 0;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  font-family: 'Pretendard-Regular', sans-serif;
+}
+
+.sliderWrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.slideBtn {
+  position: absolute;
+  top: 50%;
+  z-index: 2;
+  transform: translateY(-50%);
+  background: #fff;
+  border: none;
+  border-radius: 50%;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s;
+  opacity: 0.9;
+}
+.slideBtn:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.leftBtn {
+  left: -20px;
+}
+.rightBtn {
+  right: -20px;
+}
+
+.cardListOuter {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 0 0;
+}
+
+.cardList {
+  width: 100%;
+  display: flex;
+  gap: 24px;
+  padding-bottom: 8px;
+  scrollbar-width: thin;
+  scrollbar-color: #ddd #fff;
+  transition: none;
+  padding: 0 0 8px 0;
+}
+
+.cardList > * {
+  flex: 0 0 calc(100% / 3);
+  max-width: calc(100% / 3);
+}
+
+.cardList::-webkit-scrollbar {
+  height: 8px;
+}
+.cardList::-webkit-scrollbar-thumb {
+  background: #ddd;
+  border-radius: 4px;
+}
+.cardList::-webkit-scrollbar-track {
+  background: #fff;
+}
+
+@media (max-width: 1200px) {
+  .section {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 900px) {
+  .cardList {
+    gap: 16px;
+  }
+  .title {
+    font-size: 1.3rem;
+  }
+} 

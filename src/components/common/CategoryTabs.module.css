@@ -26,7 +26,7 @@
   background: none;
   border: none;
   font-size: 15px;
-  color: #232f3e;
+  color: #121212;
   padding: 0 10px;
   height: 40px;
   border-radius: 8px;
@@ -36,6 +36,11 @@
 }
 .categoryTabButton:hover, .categoryTabButton:focus {
   background: #f7f8fa;
+  color: #121212;
+}
+.categoryTabButton.active:hover,
+.categoryTabButton.active:focus {
+  background: none;
 }
 .categoryIcon {
   margin-right: 6px;
@@ -45,6 +50,7 @@
 }
 .categoryLabel {
   font-weight: 500;
+  color: #121212;
 }
 
 @media (max-width: 768px) {

@@ -90,3 +90,47 @@ npm run dev
 
 - React, TypeScript, Vite, CSS Modules, Pretendard, Storybook, Jest, ESLint, Prettier
 
+## 개발 및 품질 관리 가이드
+
+### 1. Storybook 실행
+
+```bash
+npm run storybook
+```
+- 공통 컴포넌트 UI/UX, 접근성, 다양한 상태를 시각적으로 확인/문서화
+
+### 2. 테스트 실행
+
+```bash
+npm test
+```
+- Jest + React Testing Library 기반 단위 테스트 자동화
+- 커스텀 matcher(jest-dom) 포함
+
+### 3. Lint & Build
+
+```bash
+npm run lint
+npm run build
+```
+- 코드 스타일, 타입, 빌드 품질 점검
+
+### 4. CI 자동화(GitHub Actions)
+- main 브랜치로 push/pull request 시 lint, test, build 자동 실행
+- 워크플로우: `.github/workflows/ci.yml`
+
+### 5. 디자인 시스템/토큰
+- `src/styles/variables.css`에서 색상, 폰트, 간격, 반응형 등 CSS 변수 관리
+
+### 6. 타입/공통 구조
+- `src/types/`에서 공통 타입 정의 및 관리
+- props, 네이밍, 접근성 일관성 유지
+
+### 7. 기타
+- 접근성(aria, role 등) 강화
+- Storybook/테스트/빌드 자동화로 품질 보장
+
+---
+
+문의/기여: PR 또는 Issue 등록
+

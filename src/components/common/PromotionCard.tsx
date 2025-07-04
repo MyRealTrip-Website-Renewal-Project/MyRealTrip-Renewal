@@ -1,23 +1,25 @@
 import React from 'react';
 import styles from './PromotionCard.module.css';
 
-interface PromotionCardProps {
+export interface PromotionCardProps {
   image: string;
-  href?: string;
-  alt?: string;
-  index?: number;
+  title: string;
+  buttonText: string;
+  buttonUrl: string;
+  tabIndex?: number;
+  role?: string;
 }
 
-const PromotionCard: React.FC<PromotionCardProps> = ({ image, href = '#', alt = '프로모션 이미지', index }) => {
-  return (
-    <a className={styles.card} href={href} target="_blank" rel="noopener noreferrer">
-      <img
-        src={image}
-        alt={alt}
-        className={index === 1 ? `${styles.image} ${styles.left}` : styles.image}
-      />
-    </a>
-  );
-};
+const PromotionCard: React.FC<PromotionCardProps> = ({
+  image, title, buttonText, buttonUrl, tabIndex = 0, role = 'article'
+}) => (
+  <div className={styles.card} tabIndex={tabIndex} role={role} aria-label={title}>
+    <img src={image} alt={title} className={styles.img} />
+    <div className={styles.info}>
+      <div className={styles.title}>{title}</div>
+      <a href={buttonUrl} className={styles.btn} aria-label={buttonText}>{buttonText}</a>
+    </div>
+  </div>
+);
 
 export default PromotionCard; 

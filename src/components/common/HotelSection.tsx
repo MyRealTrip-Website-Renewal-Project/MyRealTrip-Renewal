@@ -4,6 +4,10 @@ import badgeGuarantee from '../../assets/img/0AS6o120009gxfriv28B3.webp';
 import badgeLowest from '../../assets/img/0AS5f120008whj34f2145.webp';
 import badgeStay from '../../assets/img/0AS2j120009gxknwsA052.webp';
 import promoImg from '../../assets/img/b0c8dc949e5e03c58041e395601d75a7.b0c8dc949e5e03c58041e395601d75a7.png';
+import HotelCard from './HotelCard';
+import PromotionCard from './PromotionCard';
+import CityTab from './CityTab';
+import Badge from './Badge';
 
 export interface Badge {
   icon: React.ReactNode;
@@ -132,59 +136,24 @@ const HotelSection: React.FC<HotelSectionProps> = ({
       <h2 className={styles.title}>{title}</h2>
       <div className={styles.badgeRow}>
         {badges.map((badge, i) => (
-          <span key={i} className={styles.badge} style={badge.color ? { color: badge.color } : {}}>
-            {badge.icon}
-            <span>{badge.text}</span>
-          </span>
+          <Badge key={i} icon={badge.icon} text={badge.text} />
         ))}
       </div>
       <div className={styles.cityRow}>
         {cities.map(city => (
-          <div key={city.name} style={{display:'inline-block',padding:0}}>
-            <button
-              className={city.selected ? styles.cityActive : styles.city}
-              onClick={city.onClick}
-              type="button"
-            >
-              {city.name}
-            </button>
-          </div>
+          <CityTab key={city.name} name={city.name} selected={city.selected} onClick={city.onClick} />
         ))}
       </div>
       <div className={styles.cardList}>
         {hotels.map(hotel => (
-          <div key={hotel.id} className={styles.hotelCard}>
-            <img src={hotel.image} alt={hotel.name} className={styles.hotelImg} />
-            <div className={styles.hotelInfo}>
-              <div className={styles.hotelName}>
-                {hotel.name}
-                {hotel.star && <span className={styles.stars}>{'★'.repeat(hotel.star)}</span>}
-              </div>
-              <div className={styles.hotelReviewRow}>
-                <span className={styles.rating}><strong>{hotel.rating}</strong><span className={styles.ratingOutOf}>/10</span></span>
-                <a href={hotel.reviewUrl} className={styles.reviewLink} target="_blank" rel="noopener noreferrer">
-                  이용자 리뷰 <strong>{hotel.reviewCount}</strong>개
-                </a>
-              </div>
-              <div className={styles.hotelBadgeRow}>
-                {hotel.freeCancel && <span className={styles.freeCancel}>무료 취소</span>}
-                {hotel.timeSale && <span className={styles.timeSale}>타임 세일</span>}
-                {hotel.badgeText && <span className={styles.hotelBadge} style={hotel.badgeColor ? { color: hotel.badgeColor } : {}}>{hotel.badgeText}</span>}
-              </div>
-              <div className={styles.hotelPriceRow}>
-                <span className={styles.priceLabel}>최저가</span>
-                <span className={styles.price}><strong>{hotel.price}</strong></span>
-              </div>
-            </div>
-          </div>
+          <HotelCard key={hotel.id} hotel={hotel} />
         ))}
-        <div className={styles.promoCard}>
-          <img src={promotion.image} alt={promotion.title} className={styles.promoImg} />
-          <div className={styles.promoInfo}>
-            <div className={styles.promoTitle}>{promotion.title}</div>
-            <a href={promotion.buttonUrl} className={styles.promoBtn}>{promotion.buttonText}</a>
-          </div>
-        </div>
+        <PromotionCard
+          image={promotion.image}
+          title={promotion.title}
+          buttonText={promotion.buttonText}
+          buttonUrl={promotion.buttonUrl}
+        />
       </div>
     </section>
   );

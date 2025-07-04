@@ -1,69 +1,72 @@
+@import '../../styles/variables.css';
+
 .section {
   width: 100%;
-  max-width: 1200px;
-  margin: 32px auto 0 auto;
-  background: #fff;
-  border-radius: 8px;
+  max-width: var(--breakpoint-lg);
+  margin: var(--spacing-lg) auto 0 auto;
+  padding: var(--spacing-lg) 0 var(--spacing-xl) 0;
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
   /* box-shadow: 0 2px 16px rgba(0,0,0,0.06); */
-  font-family: 'Pretendard-Regular', sans-serif;
+  font-family: var(--font-family);
 }
 
 .title {
-  font-size: 28px;
-  font-weight: 800;
-  margin: 0 0 12px 0;
-  color: #222;
+  font-size: var(--font-size-title);
+  font-weight: var(--font-weight-extrabold);
+  margin: 0 0 var(--spacing-md) 0;
+  color: var(--color-black);
   letter-spacing: -1px;
-  padding-top: 32px;
+  padding-top: 0;
 }
 
 .badgeRow {
   display: flex;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   align-items: flex-end;
 }
 .badge {
   display: flex;
   align-items: flex-end;
-  font-size: 1.01rem;
-  font-weight: 600;
-  gap: 4px;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  gap: var(--spacing-xs);
   line-height: 1.2;
-  color: #222;
+  color: var(--color-black);
 }
 .badge img, .badge svg, .badge .icon {
   width: 18px;
   height: 18px;
   display: inline-block;
   vertical-align: middle;
-  margin-right: 2px;
+  margin-right: var(--spacing-xxs);
 }
 .badge span:last-child {
   border-bottom: 1px dotted #aaa;
   padding-bottom: 1px;
-  font-size: 1.01rem;
-  font-weight: 600;
-  color: #222;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
 }
 
 .cityRow {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
   justify-content: flex-start;
 }
 .city, .cityActive {
-  border: 1.5px solid #ececec;
+  border: 1.5px solid var(--color-border);
   background: #fff;
-  color: #222;
-  font-size: 1.05rem;
-  padding: 8px 22px;
-  border-radius: 8px;
+  color: var(--color-black);
+  font-size: var(--font-size-label);
+  padding: var(--spacing-sm) var(--spacing-xl);
+  border-radius: var(--radius-sm);
   cursor: pointer;
-  font-weight: 500;
+  font-weight: var(--font-weight-bold);
   transition: background 0.2s, color 0.2s, border 0.2s;
   box-shadow: 0 1px 2px rgba(0,0,0,0.03);
 }
@@ -72,16 +75,16 @@
   background: #f5f5f7;
 }
 .cityActive {
-  background: #222;
+  background: var(--color-black);
   color: #fff;
-  font-weight: 700;
-  border: 1.5px solid #222;
+  font-weight: var(--font-weight-extrabold);
+  border: 1.5px solid var(--color-black);
 }
 .cityActive:hover {
-  background: #222;
+  background: var(--color-black);
   color: #fff;
-  font-weight: 700;
-  border: 1.5px solid #222;
+  font-weight: var(--font-weight-extrabold);
+  border: 1.5px solid var(--color-black);
 }
 
 .cityTable {
@@ -89,23 +92,23 @@
   width: auto;
   margin-left: 0;
   margin-right: auto;
-  margin-bottom: 24px;
+  margin-bottom: var(--spacing-xl);
   border-collapse: separate;
-  border-spacing: 12px 0;
+  border-spacing: var(--spacing-md) 0;
 }
 
 .cardList {
   display: flex;
-  gap: 24px;
-  margin-top: 8px;
+  gap: var(--spacing-lg);
+  margin-top: var(--spacing-xs);
   justify-content: space-between;
   width: 100%;
 }
 
 .hotelCard, .promoCard {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  background: var(--color-bg);
+  border-radius: var(--radius-md);
+  box-shadow: var(--color-shadow);
   overflow: hidden;
   width: 260px;
   display: flex;
@@ -114,7 +117,7 @@
   height: 340px;
 }
 .hotelCard:hover, .promoCard:hover {
-  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+  box-shadow: var(--color-shadow-hover);
   transform: translateY(-4px) scale(1.03);
 }
 .hotelImg, .promoImg {
@@ -132,12 +135,12 @@
 }
 .hotelName {
   font-size: 1.08rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   margin-bottom: 2px;
-  color: #222;
+  color: var(--color-black);
 }
 .stars {
-  color: #ffb300;
+  color: var(--color-badge2);
   font-size: 1rem;
   margin-left: 2px;
 }
@@ -151,14 +154,14 @@
   background: #2d3a8c;
   color: #fff;
   font-size: 0.98rem;
-  font-weight: 700;
-  border-radius: 8px;
+  font-weight: var(--font-weight-extrabold);
+  border-radius: var(--radius-sm);
   padding: 2px 8px 2px 8px;
 }
 .reviewLink {
   color: #2d3a8c;
   font-size: 0.98rem;
-  font-weight: 500;
+  font-weight: var(--font-weight-bold);
   text-decoration: underline;
   margin-left: 2px;
 }
@@ -168,19 +171,19 @@
   margin-bottom: 2px;
 }
 .freeCancel {
-  color: #1ec800;
+  color: var(--color-badge1);
   font-size: 0.97rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 }
 .timeSale {
-  color: #e53935;
+  color: var(--color-error);
   font-size: 0.97rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 }
 .hotelBadge {
-  color: #ff9100;
+  color: var(--color-badge3);
   font-size: 0.97rem;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 }
 .hotelPriceRow {
   display: flex;
@@ -190,27 +193,27 @@
 }
 .priceLabel {
   font-size: 0.98rem;
-  color: #888;
-  font-weight: 500;
+  color: var(--color-gray);
+  font-weight: var(--font-weight-bold);
 }
 .price {
   font-size: 1.18rem;
-  font-weight: 800;
-  color: #222;
+  font-weight: var(--font-weight-extrabold);
+  color: var(--color-black);
   letter-spacing: -1px;
 }
 .promoTitle {
   font-size: 1.18rem;
-  font-weight: 700;
-  color: #222;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
   text-align: center;
   margin-bottom: 18px;
 }
 .promoBtn {
-  background: #3973f5;
+  background: var(--color-primary);
   color: #fff;
   font-size: 1.08rem;
-  font-weight: 700;
+  font-weight: var(--font-weight-bold);
   border: none;
   border-radius: 8px;
   padding: 13px 0;
@@ -230,25 +233,21 @@
 
 @media (max-width: 1100px) {
   .cardList {
-    gap: 18px;
+    gap: var(--spacing-md);
   }
   .hotelCard, .promoCard {
-    width: calc((100% - 18px) / 2);
-    min-width: 180px;
-    max-width: 320px;
+    width: 220px;
   }
 }
 @media (max-width: 700px) {
   .section {
-    padding: 0 2vw 24px 2vw;
+    padding: var(--spacing-md) 0 var(--spacing-lg) 0;
   }
   .cardList {
-    flex-direction: column;
-    gap: 18px;
+    gap: var(--spacing-sm);
   }
   .hotelCard, .promoCard {
-    width: 100%;
-    min-width: 0;
-    max-width: 100%;
+    width: 160px;
+    height: 260px;
   }
 } 

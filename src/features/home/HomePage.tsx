@@ -3,7 +3,6 @@ import { Helmet } from 'react-helmet-async';
 import MainVisual from '@features/mainVisual/MainVisual';
 import PromotionSection from '../../components/common/PromotionSection';
 import HotelSectionContainer from '../../components/common/HotelSectionContainer';
-import SpecialHotelSectionContainer from '../../components/common/SpecialHotelSectionContainer';
 
 export default React.memo(function Home() {
   return (
@@ -21,7 +20,6 @@ export default React.memo(function Home() {
         />
         <PromotionSection />
         <HotelSectionContainer />
-        <SpecialHotelSectionContainer />
       </main>
     </>
   );

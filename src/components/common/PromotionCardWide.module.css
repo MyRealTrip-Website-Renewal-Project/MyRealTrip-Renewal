@@ -1,0 +1,109 @@
+@import '../../styles/variables.css';
+
+.banner {
+  width: 365px;
+  aspect-ratio: 3 / 1;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--color-shadow);
+  overflow: hidden;
+  position: relative;
+  background: #eee;
+  cursor: pointer;
+  transition: box-shadow 0.2s, transform 0.2s;
+  display: flex;
+  align-items: stretch;
+  justify-content: stretch;
+  padding: 0;
+  outline: none;
+}
+.banner:hover, .banner:focus {
+  box-shadow: var(--color-shadow-hover);
+  transform: translateY(-2px) scale(1.02);
+}
+.banner:active {
+  box-shadow: 0 2px 8px rgba(57,115,245,0.18);
+  transform: scale(0.98);
+}
+.banner:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  flex: 1 1 0;
+}
+.period {
+  position: absolute;
+  top: 14px;
+  right: 20px;
+  background: rgba(0,0,0,0.55);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 12px;
+  padding: 4px 14px;
+  z-index: 2;
+  pointer-events: none;
+}
+.left {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.title {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1.1;
+}
+.subtitle {
+  margin-top: 8px;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+.right {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  position: relative;
+}
+.btn {
+  margin-top: 8px;
+  width: fit-content;
+  padding: 8px 20px;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: var(--font-weight-bold);
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(57,115,245,0.13);
+  cursor: pointer;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}
+.btn:hover {
+  background: #2456c7;
+  box-shadow: 0 4px 16px rgba(57,115,245,0.18);
+}
+
+@media (max-width: 900px) {
+  .banner {
+    width: 48vw;
+    min-width: 220px;
+    max-width: 98vw;
+  }
+}
+@media (max-width: 600px) {
+  .banner {
+    width: 98vw;
+    min-width: 0;
+    max-width: 100vw;
+  }
+} 

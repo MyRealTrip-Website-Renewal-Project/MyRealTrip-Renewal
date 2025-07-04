@@ -1,29 +1,69 @@
+@import '../../styles/variables.css';
+
 .card {
-  display: block;
-  border-radius: 16px;
+  background: var(--color-bg);
+  border-radius: 14px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
   overflow: hidden;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-  transition: transform 0.2s;
-  width: 100%;
-  max-width: 600px;
-  min-width: 320px;
-  background: #fff;
-  aspect-ratio: 3 / 1;
-  position: relative;
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  height: 340px;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 
 .card:hover {
-  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.13);
+  transform: translateY(-4px) scale(1.03);
 }
 
-.image {
-  display: block;
+.img {
   width: 100%;
-  height: 100%;
+  height: 150px;
   object-fit: cover;
-  position: absolute;
-  top: 0;
-  left: 0;
+}
+
+.info {
+  padding: 18px 16px 14px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  flex: 1;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.18rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-black);
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+.btn {
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 1.08rem;
+  font-weight: var(--font-weight-bold);
+  border: none;
+  border-radius: 8px;
+  padding: 13px 0;
+  width: 100%;
+  box-shadow: 0 2px 8px rgba(57,115,245,0.13);
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, box-shadow 0.2s;
+  text-align: center;
+  display: block;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #2456c7;
+  box-shadow: 0 4px 16px rgba(57,115,245,0.18);
 }
 
 .left {

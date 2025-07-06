@@ -9,20 +9,22 @@
   position: relative;
   background: #eee;
   cursor: pointer;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   display: flex;
   align-items: stretch;
   justify-content: stretch;
   padding: 0;
   outline: none;
+  transform-origin: center;
 }
 .banner:hover, .banner:focus {
-  box-shadow: var(--color-shadow-hover);
-  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px) scale(1.02);
 }
 .banner:active {
-  box-shadow: 0 2px 8px rgba(57,115,245,0.18);
-  transform: scale(0.98);
+  box-shadow: 0 4px 15px rgba(57, 115, 245, 0.2);
+  transform: translateY(-2px) scale(0.98);
+  transition: all 0.1s ease-out;
 }
 .banner:focus-visible {
   outline: 3px solid var(--color-primary);
@@ -35,12 +37,16 @@
   display: block;
   border-radius: 0;
   flex: 1 1 0;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.banner:hover .img {
+  transform: scale(1.05);
 }
 .period {
   position: absolute;
   top: 14px;
   right: 20px;
-  background: rgba(0,0,0,0.55);
+  background: rgba(0, 0, 0, 0.55);
   color: #fff;
   font-size: 1rem;
   font-weight: 600;
@@ -48,6 +54,12 @@
   padding: 4px 14px;
   z-index: 2;
   pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(4px);
+}
+.banner:hover .period {
+  background: rgba(0, 0, 0, 0.7);
+  transform: translateY(-2px);
 }
 .left {
   flex: 1;
@@ -81,16 +93,17 @@
   font-weight: var(--font-weight-bold);
   border: none;
   border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(57,115,245,0.13);
+  box-shadow: 0 2px 8px rgba(57, 115, 245, 0.13);
   cursor: pointer;
-  transition: background 0.2s, box-shadow 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   text-decoration: none;
   display: inline-block;
 }
 .btn:hover {
   background: #2456c7;
-  box-shadow: 0 4px 16px rgba(57,115,245,0.18);
+  box-shadow: 0 4px 16px rgba(57, 115, 245, 0.18);
+  transform: translateY(-1px);
 }
 
 @media (max-width: 900px) {

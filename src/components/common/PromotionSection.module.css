@@ -12,12 +12,25 @@
   font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-lg);
   font-family: var(--font-family);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .sliderWrap {
   position: relative;
   display: flex;
   align-items: center;
+  touch-action: pan-y pinch-zoom;
 }
 
 .slideBtn {
@@ -35,55 +48,110 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background 0.2s;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   opacity: 0.9;
+  animation: slideInButton 0.5s ease-out;
 }
-.slideBtn:disabled {
+
+@keyframes slideInButton {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) scale(0.8);
+  }
+  to {
+    opacity: 0.9;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+.slideBtn:hover:not(.disabled) {
+  background: #f8f9fa;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.slideBtn:active:not(.disabled) {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.slideBtn.disabled {
   opacity: 0.3;
   cursor: default;
+  transform: translateY(-50%) scale(0.9);
 }
+
 .leftBtn {
   left: -20px;
+  animation-delay: 0.1s;
 }
+
 .rightBtn {
   right: -20px;
+  animation-delay: 0.2s;
 }
 
 .cardListOuter {
   width: 100%;
-  overflow: visible;
+  overflow: hidden;
   margin: 0;
   display: flex;
   justify-content: center;
   padding: 0;
+  position: relative;
 }
 
 .cardList {
-  width: auto;
   display: flex;
-  gap: 24px;
+  padding: 0;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+  min-width: max-content;
+}
+
+.cardList.animating {
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cardWrapper {
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 페이지 인디케이터 */
+.pageIndicator {
+  display: flex;
   justify-content: center;
   align-items: center;
+  gap: 8px;
+  margin-top: var(--spacing-lg);
   padding: 0;
-  overflow: visible;
-  transition: transform 0.5s cubic-bezier(0.4,0,0.2,1);
-  will-change: transform;
 }
 
-.cardList > * {
-  flex: 0 0 calc(100% / 3);
-  max-width: calc(100% / 3);
-}
-
-.cardList::-webkit-scrollbar {
+.indicatorDot {
+  width: 8px;
   height: 8px;
-}
-.cardList::-webkit-scrollbar-thumb {
+  border-radius: 50%;
+  border: none;
   background: #ddd;
-  border-radius: var(--radius-xs);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0;
+  outline: none;
 }
-.cardList::-webkit-scrollbar-track {
-  background: var(--color-bg);
+
+.indicatorDot:hover:not(:disabled) {
+  background: #bbb;
+  transform: scale(1.2);
+}
+
+.indicatorDot.active {
+  background: var(--color-primary);
+  transform: scale(1.3);
+}
+
+.indicatorDot:disabled {
+  cursor: default;
+  opacity: 0.5;
 }
 
 @media (max-width: 1200px) {
@@ -91,11 +159,39 @@
     max-width: 100%;
   }
 }
+
 @media (max-width: 900px) {
-  .cardList {
-    gap: var(--spacing-md);
-  }
   .title {
     font-size: var(--font-size-section-title);
+  }
+  .slideBtn {
+    width: 36px;
+    height: 36px;
+  }
+  .leftBtn {
+    left: -18px;
+  }
+  .rightBtn {
+    right: -18px;
+  }
+  .pageIndicator {
+    margin-top: var(--spacing-md);
+  }
+}
+
+@media (max-width: 600px) {
+  .slideBtn {
+    width: 32px;
+    height: 32px;
+  }
+  .leftBtn {
+    left: -16px;
+  }
+  .rightBtn {
+    right: -16px;
+  }
+  .indicatorDot {
+    width: 6px;
+    height: 6px;
   }
 } 

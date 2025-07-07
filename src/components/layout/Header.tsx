@@ -7,6 +7,8 @@ import CI from '@assets/img/CI.svg';
 import type { Category } from '../../types/category';
 import type { SubTab } from '../../types/subtab';
 import ArrowDownIcon, { SearchIcon } from '../../components/common/ArrowDownIcon';
+import Modal from '../common/Modal';
+import AuthModal from '../common/AuthModal';
 
 const SEARCH_ICON_URL = 'https://dffoxz5he03rp.cloudfront.net/icons/ic_search_20x20_gray_500.svg';
 
@@ -17,6 +19,7 @@ interface HeaderProps {
 
 const Header = React.memo(function Header({ categories, subTabs }: HeaderProps) {
   const [search, setSearch] = useState('');
+  const [authOpen, setAuthOpen] = useState(false);
   const location = useLocation();
 
   return (
@@ -48,7 +51,7 @@ const Header = React.memo(function Header({ categories, subTabs }: HeaderProps) 
         {/* Right: Partner/Login */}
         <div className={styles['header-right']}>
           <span className={styles['partner-login']}>파트너 로그인</span>
-          <button className={styles['login-btn']}>로그인 및 회원가입</button>
+          <button className={styles['login-btn']} onClick={() => setAuthOpen(true)}>로그인 및 회원가입</button>
         </div>
       </div>
       {/* Tabs: Category + SubTabs together */}
@@ -56,6 +59,9 @@ const Header = React.memo(function Header({ categories, subTabs }: HeaderProps) 
         <CategoryTabs categories={categories} />
         <SubTabs subTabs={subTabs} />
       </div>
+      <Modal open={authOpen} onClose={() => setAuthOpen(false)}>
+        <AuthModal />
+      </Modal>
     </header>
   );
 });

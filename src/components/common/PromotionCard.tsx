@@ -11,14 +11,10 @@ export interface PromotionCardProps {
 }
 
 const PromotionCard: React.FC<PromotionCardProps> = ({
-  image, title, buttonText, buttonUrl, tabIndex = 0, role = 'article'
+  image, tabIndex = 0, role = 'article'
 }) => (
-  <div className={styles.card} tabIndex={tabIndex} role={role} aria-label={title}>
-    <img src={image} alt={title} className={styles.img} />
-    <div className={styles.info}>
-      <div className={styles.title}>{title}</div>
-      <a href={buttonUrl} className={styles.btn} aria-label={buttonText}>{buttonText}</a>
-    </div>
+  <div className={styles.card} tabIndex={tabIndex} role={role}>
+    <img src={image} alt="프로모션 이미지" className={styles.img} />
   </div>
 );
 

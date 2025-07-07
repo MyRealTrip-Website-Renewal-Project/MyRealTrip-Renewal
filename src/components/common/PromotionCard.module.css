@@ -1,17 +1,16 @@
 @import '../../styles/variables.css';
 
 .card {
-  background: var(--color-bg);
-  border-radius: 14px;
-  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-  overflow: hidden;
-  width: 260px;
+  width: 100%;
+  height: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 340px;
-  transition: box-shadow 0.2s, transform 0.2s;
+  align-items: stretch;
+  justify-content: stretch;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  background: #fff;
+  padding: 0;
 }
 
 .card:hover {
@@ -21,8 +20,9 @@
 
 .img {
   width: 100%;
-  height: 150px;
+  height: 100%;
   object-fit: cover;
+  display: block;
 }
 
 .info {

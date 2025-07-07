@@ -11,14 +11,15 @@ describe('PromotionCard', () => {
     buttonUrl: 'https://promo.com',
   };
 
-  it('renders title and button', () => {
+  it('renders image with correct alt text', () => {
     render(<PromotionCard {...props} />);
-    expect(screen.getByText('프로모션 타이틀')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: '자세히 보기' })).toHaveAttribute('href', 'https://promo.com');
+    expect(screen.getByAltText('프로모션 이미지')).toBeInTheDocument();
   });
 
-  it('renders image with alt text', () => {
+  it('renders card with correct role and tabIndex', () => {
     render(<PromotionCard {...props} />);
-    expect(screen.getByAltText('프로모션 타이틀')).toBeInTheDocument();
+    const card = screen.getByRole('article');
+    expect(card).toBeInTheDocument();
+    expect(card).toHaveAttribute('tabIndex', '0');
   });
 }); 

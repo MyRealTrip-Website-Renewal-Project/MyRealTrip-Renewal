@@ -50,6 +50,11 @@ function sanitizeInput(input: string) {
 function SearchBar() {
   const [search, setSearch] = useState('');
   const [searchLoading, setSearchLoading] = useState(false);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  const suggestions = [
+    '발리', '강릉시', '인천', '후쿠오카', '푸껫',
+    '양양', '방콕', '타이베이', '마카오', '교토',
+  ];
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setSearch(sanitizeInput(e.target.value));
@@ -58,18 +63,28 @@ function SearchBar() {
   const handleSearch = async () => {
     if (searchLoading) return;
     setSearchLoading(true);
-    // 실제 검색 로직 (API 호출 등)
-    // 민감정보 콘솔 출력 금지 (예시)
-    // console.log('검색어:', search); // X
     setTimeout(() => {
       setSearchLoading(false);
-    }, 800); // 예시: 0.8초 후 버튼 활성화
+    }, 800);
   };
 
+  // 바깥 클릭 시 추천지 닫힘
+  React.useEffect(() => {
+    if (!showSuggestions) return;
+    const handleClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('.search-suggestion-wrap')) {
+        setShowSuggestions(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClick);
+    return () => document.removeEventListener('mousedown', handleClick);
+  }, [showSuggestions]);
+
   return (
-    <div className={styles.searchBar}>
+    <div className={styles.searchBar} style={{ position: 'relative' }}>
       {/* 여행지 */}
-      <div className={styles.searchFieldBox}>
+      <div className={styles.searchFieldBox} style={{ position: 'relative' }}>
         <div className={styles.searchFieldLabel}>여행지</div>
         <input
           className={styles.searchInput}
@@ -77,7 +92,49 @@ function SearchBar() {
           value={search}
           onChange={handleInputChange}
           autoComplete="off"
+          onFocus={() => setShowSuggestions(true)}
         />
+        {showSuggestions && (
+          <div className="search-suggestion-wrap" style={{
+            position: 'absolute',
+            top: '100%',
+            left: 0,
+            right: 0,
+            background: '#fff',
+            border: '1.5px solid #e5e7eb',
+            borderRadius: '0 0 12px 12px',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.07)',
+            zIndex: 20,
+            marginTop: '-2px',
+            padding: '18px 0 10px 0',
+            minWidth: '220px',
+          }}>
+            <div style={{ fontWeight: 700, fontSize: 13, color: '#888', margin: '0 0 12px 18px' }}>인기 여행지</div>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0 32px', padding: '0 18px' }}>
+              {suggestions.map((city, i) => (
+                <div
+                  key={city}
+                  style={{
+                    width: 'calc(20% - 6px)',
+                    minWidth: 60,
+                    marginBottom: 14,
+                    fontWeight: 600,
+                    fontSize: 15,
+                    color: '#232f3e',
+                    cursor: 'pointer',
+                    textAlign: 'left',
+                  }}
+                  onMouseDown={() => {
+                    setSearch(city);
+                    setShowSuggestions(false);
+                  }}
+                >
+                  {city}
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
       </div>
       {/* 체크인/1박/체크아웃 - 한 박스에 */}
       <div className={styles.dateBox} style={{ flexDirection: 'row', alignItems: 'center', gap: 0, minWidth: 320, padding: '0 0 0 0' }}>

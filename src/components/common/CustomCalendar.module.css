@@ -1,0 +1,130 @@
+.calendarModal {
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 100;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+  padding: 24px 32px 18px 32px;
+  min-width: 420px;
+  min-height: 380px;
+}
+.calendarHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+.headerTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: #232f3e;
+}
+.navBtn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #232f3e;
+  padding: 4px 12px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.navBtn:hover {
+  background: #f5f6fa;
+}
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 15px;
+  color: #888;
+  cursor: pointer;
+  margin-left: 12px;
+}
+.monthsWrap {
+  display: flex;
+  gap: 32px;
+}
+.monthWrap {
+  min-width: 200px;
+}
+.monthHeader {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #232f3e;
+}
+.weekdays {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4px;
+}
+.weekday {
+  width: 32px;
+  text-align: center;
+  font-size: 13px;
+  color: #888;
+  font-weight: 500;
+}
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.week {
+  display: flex;
+  justify-content: space-between;
+}
+.day {
+  width: 32px;
+  height: 32px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  font-size: 15px;
+  color: #232f3e;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  margin: 0 1px;
+}
+.day:hover:not(.disabled):not(.selected) {
+  background: #f5f6fa;
+}
+.today {
+  border: 1.5px solid #3b82f6;
+}
+.selected {
+  background: #3b82f6;
+  color: #fff;
+}
+.inRange {
+  background: #e0edff;
+  color: #232f3e;
+}
+.disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+.emptyDay {
+  width: 32px;
+  height: 32px;
+}
+.summary {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 15px;
+  color: #232f3e;
+  font-weight: 500;
+  display: flex;
+  gap: 18px;
+  justify-content: center;
+}
+.fadeIn {
+  animation: fadeIn 0.18s cubic-bezier(0.4,0,0.2,1);
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+} 

@@ -1,0 +1,43 @@
+import { Meta, Story, ArgsTable, PRIMARY_STORY } from '@storybook/addon-docs';
+import { Input } from './Input';
+
+<Meta title="UI/Input" component={Input} />
+
+# Input 입력 필드
+
+다양한 타입(텍스트, 패스워드, 검색 등)과 상태, 아이콘, 라벨, 에러, 헬퍼텍스트, 접근성 지원.
+
+---
+
+## 사용 예시
+
+<Story name="기본 입력">{{
+  args: { placeholder: '입력하세요', label: '이름' }
+}}</Story>
+
+<Story name="에러 상태">{{
+  args: { placeholder: '이메일', error: '이메일을 입력하세요' }
+}}</Story>
+
+---
+
+## Props
+
+<ArgsTable story={PRIMARY_STORY} />
+
+---
+
+## 사용법
+
+```tsx
+import { Input } from '@components/ui';
+
+<Input label="이메일" placeholder="이메일 입력" />
+```
+
+---
+
+## UX/접근성 가이드
+
+- label, aria-label, aria-describedby 등 접근성 속성 지원
+- 에러/헬퍼 텍스트, 아이콘, 다양한 크기/스타일 

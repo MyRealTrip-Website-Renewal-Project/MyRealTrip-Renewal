@@ -1,0 +1,32 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+}
+.label {
+  font-size: $font-size-base;
+  color: $text-primary;
+  font-weight: $font-weight-bold;
+  margin-bottom: $spacing-xs;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.required {
+  color: $danger;
+  font-size: $font-size-xs;
+}
+.description {
+  font-size: $font-size-xs;
+  color: $text-secondary;
+  margin-bottom: $spacing-xs;
+}
+.error-message {
+  color: #e53935;
+  font-size: $font-size-xs;
+  margin-top: 4px;
+} 

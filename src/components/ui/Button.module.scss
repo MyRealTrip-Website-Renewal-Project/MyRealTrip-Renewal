@@ -1,0 +1,21 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.button {
+  @include button-base;
+  background: $primary;
+  color: #fff;
+  &:hover { background: darken($primary, 10%); }
+}
+.button--secondary {
+  background: $secondary;
+  color: #fff;
+}
+.button--outline {
+  background: #fff;
+  color: $primary;
+  border: 2px solid $primary;
+}
+.button--left { @include align-left; }
+.button--center { @include align-center; }
+.button--right { @include align-right; } 

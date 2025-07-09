@@ -1,0 +1,274 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.popover {
+  position: relative;
+  display: inline-block;
+}
+
+.popoverContent {
+  position: absolute;
+  z-index: 1000;
+  background: $background;
+  border: 1px solid $border;
+  border-radius: $radius-md;
+  box-shadow: $shadow;
+  padding: $spacing-md;
+  min-width: 200px;
+  max-width: 300px;
+  opacity: 0;
+  visibility: hidden;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, visibility 0.2s ease, transform 0.2s ease;
+  
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  
+  // 방향별 스타일
+  &.top {
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    margin-bottom: $spacing-sm;
+    
+    &.visible {
+      transform: translateX(-50%) scale(1);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-top-color: $background;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-top-color: $border;
+    }
+  }
+  
+  &.bottom {
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) scale(0.95);
+    margin-top: $spacing-sm;
+    
+    &.visible {
+      transform: translateX(-50%) scale(1);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-bottom-color: $background;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      border: 7px solid transparent;
+      border-bottom-color: $border;
+    }
+  }
+  
+  &.left {
+    right: 100%;
+    top: 50%;
+    transform: translateY(-50%) scale(0.95);
+    margin-right: $spacing-sm;
+    
+    &.visible {
+      transform: translateY(-50%) scale(1);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-left-color: $background;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      left: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 7px solid transparent;
+      border-left-color: $border;
+    }
+  }
+  
+  &.right {
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%) scale(0.95);
+    margin-left: $spacing-sm;
+    
+    &.visible {
+      transform: translateY(-50%) scale(1);
+    }
+    
+    &::after {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 6px solid transparent;
+      border-right-color: $background;
+    }
+    
+    &::before {
+      content: '';
+      position: absolute;
+      right: 100%;
+      top: 50%;
+      transform: translateY(-50%);
+      border: 7px solid transparent;
+      border-right-color: $border;
+    }
+  }
+  
+  // 크기 변형
+  &.sm {
+    min-width: 150px;
+    max-width: 200px;
+    padding: $spacing-sm;
+  }
+  
+  &.lg {
+    min-width: 300px;
+    max-width: 400px;
+    padding: $spacing-lg;
+  }
+  
+  // 테마 변형
+  &.primary {
+    border-color: $primary;
+    
+    &::before {
+      border-top-color: $primary;
+      border-bottom-color: $primary;
+      border-left-color: $primary;
+      border-right-color: $primary;
+    }
+  }
+  
+  &.success {
+    border-color: $success;
+    
+    &::before {
+      border-top-color: $success;
+      border-bottom-color: $success;
+      border-left-color: $success;
+      border-right-color: $success;
+    }
+  }
+  
+  &.warning {
+    border-color: $warning;
+    
+    &::before {
+      border-top-color: $warning;
+      border-bottom-color: $warning;
+      border-left-color: $warning;
+      border-right-color: $warning;
+    }
+  }
+  
+  &.error {
+    border-color: $error;
+    
+    &::before {
+      border-top-color: $error;
+      border-bottom-color: $error;
+      border-left-color: $error;
+      border-right-color: $error;
+    }
+  }
+}
+
+.popoverHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: $spacing-sm;
+  padding-bottom: $spacing-sm;
+  border-bottom: 1px solid $border-light;
+  
+  h3 {
+    margin: 0;
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    color: $text-primary;
+  }
+  
+  .closeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: $radius-sm;
+    color: $text-secondary;
+    transition: background-color 0.2s ease;
+    
+    &:hover {
+      background-color: $background-secondary;
+    }
+  }
+}
+
+.popoverBody {
+  color: $text-primary;
+  font-size: $font-size-sm;
+  line-height: 1.5;
+}
+
+.popoverFooter {
+  display: flex;
+  justify-content: flex-end;
+  gap: $spacing-sm;
+  margin-top: $spacing-md;
+  padding-top: $spacing-sm;
+  border-top: 1px solid $border-light;
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .popoverContent {
+    min-width: 150px;
+    max-width: 250px;
+    padding: $spacing-sm;
+  }
+  
+  .popoverHeader h3 {
+    font-size: $font-size-sm;
+  }
+  
+  .popoverBody {
+    font-size: 12px;
+  }
+} 

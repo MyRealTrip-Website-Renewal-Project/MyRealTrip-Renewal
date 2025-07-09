@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
+import { screen, fireEvent } from '@testing-library/react';
+import { customRender } from '../../test/utils/test-utils';
 import '@testing-library/jest-dom';
 import CityTab, { CityTabProps } from './CityTab';
 

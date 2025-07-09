@@ -1,0 +1,39 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin button-base {
+  padding: $spacing-sm $spacing-lg;
+  border-radius: $radius-md;
+  font-family: $font-main;
+  font-weight: $font-weight-bold;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition: background 0.18s;
+  border: none;
+  outline: none;
+}
+
+@mixin align-left {
+  text-align: left;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+@mixin align-center {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+@mixin align-right {
+  text-align: right;
+  justify-content: flex-end;
+  align-items: flex-end;
+} 

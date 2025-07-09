@@ -1,5 +1,6 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
+import { customRender } from '../../test/utils/test-utils';
 import '@testing-library/jest-dom';
 import Badge, { BadgeProps } from './Badge';
 

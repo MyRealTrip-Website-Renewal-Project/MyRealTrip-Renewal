@@ -1,136 +1,239 @@
-![CI](src/assets/img/CIWType.svg)   
-# MyRealTrip Renewal Project
+# MyRealTrip Renewal
 
-여행 예약 플랫폼 '마이리얼트립'의 UX 개선을 목표로 한 사이드 프로젝트입니다. 실제 사용자 흐름을 분석해 주요 페이지(메인, 검색, 상품 상세, 예약 등)의 UI/UX를 재설계하고, 반응형 웹 기반의 프로토타입을 제작했습니다. 사용자의 탐색 경험을 간결하고 직관적으로 개선하는 데 중점을 두었으며, 디자인 시스템 정비와 예약 흐름 최적화도 함께 진행했습니다.
+마이리얼트립의 현대적인 웹 애플리케이션입니다. React, TypeScript, 스타일드 컴포넌트를 기반으로 구축되었습니다.
 
----
+## 🚀 주요 기능
 
-## 🗂️ 시스템 폴더 구조
+### 🎨 UI/UX 개선
+- **스타일드 컴포넌트**: CSS-in-JS를 활용한 모던한 스타일링
+- **Framer Motion**: 부드러운 애니메이션과 전환 효과
+- **반응형 디자인**: 모든 디바이스에서 최적화된 사용자 경험
+- **접근성**: WCAG 가이드라인을 준수한 접근성 구현
 
-```
-MyRealTrip-Renewal/
-├── public/                   # 정적 파일 (favicon, robots.txt 등)
-├── src/
-│   ├── app/                  # 진입점(index.tsx), App, Provider, 라우팅 등
-│   ├── assets/               # 이미지, SVG 등 정적 리소스
-│   │   └── img/              # 각종 이미지 파일
-│   ├── components/
-│   │   ├── common/           # 공통 컴포넌트 (아이콘 등)
-│   │   └── layout/           # 레이아웃 컴포넌트 (Header 등)
-│   ├── features/             # 도메인별 페이지/비즈니스 로직/컴포넌트
-│   │   ├── about/            # About 페이지
-│   │   ├── home/             # Home 페이지
-│   │   ├── mainVisual/       # 메인 비주얼, 검색바 등
-│   │   └── splash/           # 스플래시 관련 컴포넌트
-│   ├── stories/              # Storybook 스토리/테스트용 컴포넌트
-│   ├── styles/               # 글로벌/테마 CSS, 폰트 등
-│   └── types/                # 타입 정의 (category, subtab 등)
-├── .storybook/               # Storybook 설정
-├── node_modules/             # npm 패키지
-├── package.json              # 프로젝트 메타/의존성/스크립트
-├── tsconfig.json             # TypeScript 설정
-├── vite.config.ts            # Vite 설정
-├── README.md                 # 프로젝트 설명서
-└── ...                       # 기타 설정/빌드 파일
-```
+### 🔧 기술 스택
+- **React 18**: 최신 React 기능 활용
+- **TypeScript**: 타입 안전성 보장
+- **React Query**: 서버 상태 관리 및 캐싱
+- **Zustand**: 클라이언트 상태 관리
+- **React Hook Form**: 폼 상태 관리 및 유효성 검사
+- **React Router**: 클라이언트 사이드 라우팅
 
----
+### 📦 상태 관리
+- **React Query**: 서버 데이터 캐싱 및 동기화
+- **Zustand**: 전역 상태 관리 (인증, 검색 등)
+- **로컬 스토리지**: 사용자 설정 및 세션 유지
 
-## 🏗️ 폴더별 역할
-
-- **public/**: 정적 파일(HTML, favicon 등)
-- **src/app/**: 앱 진입점, 라우팅, Provider 등
-- **src/assets/**: 이미지, SVG 등 정적 리소스
-- **src/components/common/**: 공통 아이콘, 버튼 등 재사용 컴포넌트
-- **src/components/layout/**: Header 등 레이아웃 관련 컴포넌트
-- **src/features/**: 도메인별 페이지/비즈니스 로직/컴포넌트/스타일
-- **src/stories/**: Storybook 스토리, 테스트용 컴포넌트
-- **src/styles/**: 글로벌 CSS, 테마, 폰트
-- **src/types/**: 타입스크립트 타입 정의
-- **.storybook/**: Storybook 설정
-- **package.json, tsconfig.json, vite.config.ts**: 프로젝트 설정 파일
-
----
-
-## 🚀 주요 기능 및 개선 내역
-
-- **UI/UX 고도화**: 픽셀 퍼펙트, 반응형, SVG 아이콘 통일, 폰트 통일 등
-- **코드 구조 개선**: 대규모 서비스에 적합한 폴더 구조, 공통화, 중복 제거
-- **반응형 처리**: 브레이크포인트별 레이아웃 자동 전환
-- **시큐어 코딩/보안**: 입력값 sanitize, 버튼 연타 방지, autocomplete="off" 등
-- **코드 품질**: 타입스크립트, ESLint, Prettier, Storybook, Jest
-
----
+### 🎯 컴포넌트 아키텍처
+- **모듈화**: 재사용 가능한 컴포넌트 설계
+- **캡슐화**: 관심사 분리를 통한 유지보수성 향상
+- **커스텀 훅**: 비즈니스 로직의 재사용성 증대
 
 ## 🛠️ 설치 및 실행
 
+### 필수 요구사항
+- Node.js 18.0.0 이상
+- npm 9.0.0 이상
+
+### 설치
 ```bash
-npm install
+npm install --legacy-peer-deps
+```
+
+### 개발 서버 실행
+```bash
 npm run dev
 ```
 
----
-
-## 🌐 배포/호스팅
-
-- 대기기
-
----
-
-## 🔒 보안/시큐어 코딩 적용 내역
-
-- 입력값 sanitize(특수문자 < > " ' 제거)
-- 검색 버튼 연타 방지(loading state, disabled)
-- 콘솔에 민감정보 출력 금지
-- autocomplete="off" 적용
-
----
-
-## 📦 기술 스택
-
-- React, TypeScript, Vite, CSS Modules, Pretendard, Storybook, Jest, ESLint, Prettier
-
-## 개발 및 품질 관리 가이드
-
-### 1. Storybook 실행
-
+### 빌드
 ```bash
-npm run storybook
+npm run build
 ```
-- 공통 컴포넌트 UI/UX, 접근성, 다양한 상태를 시각적으로 확인/문서화
 
-### 2. 테스트 실행
-
+### 테스트
 ```bash
 npm test
 ```
-- Jest + React Testing Library 기반 단위 테스트 자동화
-- 커스텀 matcher(jest-dom) 포함
 
-### 3. Lint & Build
+## 📁 프로젝트 구조
 
-```bash
-npm run lint
-npm run build
 ```
-- 코드 스타일, 타입, 빌드 품질 점검
+src/
+├── app/                    # 앱 레벨 컴포넌트
+│   ├── App.tsx            # 메인 앱 컴포넌트
+│   ├── Providers.tsx      # 전역 프로바이더
+│   └── index.tsx          # 앱 진입점
+├── components/            # 재사용 가능한 컴포넌트
+│   ├── common/           # 공통 컴포넌트
+│   │   ├── Button.styled.tsx
+│   │   ├── Modal.styled.tsx
+│   │   ├── AuthModal.styled.tsx
+│   │   └── ...
+│   └── layout/           # 레이아웃 컴포넌트
+│       ├── Header.styled.tsx
+│       └── Header.tsx
+├── features/             # 기능별 페이지
+│   ├── home/
+│   ├── about/
+│   └── ...
+├── hooks/               # 커스텀 훅
+│   ├── useLocalStorage.ts
+│   ├── useIntersectionObserver.ts
+│   ├── useDebounce.ts
+│   ├── useHotels.ts
+│   └── usePromotions.ts
+├── services/            # API 서비스
+│   └── api.ts
+├── store/               # 상태 관리
+│   ├── useAuthStore.ts
+│   └── useSearchStore.ts
+├── styles/              # 전역 스타일
+│   ├── theme.ts
+│   ├── global.css
+│   └── styled.d.ts
+└── types/               # TypeScript 타입 정의
+    ├── category.ts
+    ├── hotel.ts
+    └── ...
+```
 
-### 4. CI 자동화(GitHub Actions)
-- main 브랜치로 push/pull request 시 lint, test, build 자동 실행
-- 워크플로우: `.github/workflows/ci.yml`
+## 🎨 디자인 시스템
 
-### 5. 디자인 시스템/토큰
-- `src/styles/variables.css`에서 색상, 폰트, 간격, 반응형 등 CSS 변수 관리
+### 테마 시스템
+- **색상 팔레트**: 일관된 색상 체계
+- **타이포그래피**: Pretendard 폰트 기반
+- **간격 시스템**: 체계적인 spacing 규칙
+- **그림자**: 계층적 그림자 시스템
 
-### 6. 타입/공통 구조
-- `src/types/`에서 공통 타입 정의 및 관리
-- props, 네이밍, 접근성 일관성 유지
+### 컴포넌트 라이브러리
+- **Button**: 다양한 variant와 size 지원
+- **Modal**: 애니메이션과 접근성 고려
+- **Form**: React Hook Form 통합
+- **Card**: 호텔 카드 등 정보 표시
 
-### 7. 기타
-- 접근성(aria, role 등) 강화
-- Storybook/테스트/빌드 자동화로 품질 보장
+## 🔄 상태 관리 전략
 
----
+### React Query
+```typescript
+// 호텔 데이터 조회
+const { data: hotels, isLoading } = useHotels();
 
-문의/기여: PR 또는 Issue 등록
+// 무한 스크롤
+const { data, fetchNextPage } = useInfiniteHotels();
+```
+
+### Zustand
+```typescript
+// 인증 상태
+const { user, isAuthenticated, login } = useAuthStore();
+
+// 검색 상태
+const { query, setQuery, recentSearches } = useSearchStore();
+```
+
+## 🎯 성능 최적화
+
+### 코드 스플리팅
+- React.lazy를 활용한 페이지별 지연 로딩
+- 동적 import를 통한 번들 크기 최적화
+
+### 메모이제이션
+- React.memo를 활용한 불필요한 리렌더링 방지
+- useMemo, useCallback을 통한 계산 최적화
+
+### 이미지 최적화
+- WebP 포맷 사용
+- 적절한 이미지 크기 및 압축
+
+## 🔒 보안
+
+### 인증 시스템
+- JWT 토큰 기반 인증
+- 소셜 로그인 (Google, Apple)
+- 세션 관리 및 자동 로그아웃
+
+### 데이터 보호
+- HTTPS 통신
+- XSS 방지
+- CSRF 토큰 사용
+
+## 📱 반응형 디자인
+
+### 브레이크포인트
+- Mobile: 320px - 768px
+- Tablet: 768px - 1024px
+- Desktop: 1024px 이상
+
+### 접근성
+- 키보드 네비게이션 지원
+- 스크린 리더 호환성
+- 고대비 모드 지원
+
+## 🧪 테스팅
+
+### 테스트 전략
+- **단위 테스트**: Jest + React Testing Library
+- **통합 테스트**: 컴포넌트 간 상호작용
+- **E2E 테스트**: Playwright
+
+### 테스트 실행
+```bash
+# 단위 테스트
+npm test
+
+# 커버리지
+npm run test:coverage
+
+# E2E 테스트
+npm run test:e2e
+```
+
+## 🚀 배포
+
+### 환경별 설정
+- **개발**: 로컬 개발 환경
+- **스테이징**: 테스트 환경
+- **프로덕션**: 실제 서비스 환경
+
+### CI/CD
+- GitHub Actions를 통한 자동화
+- 자동 테스트 및 빌드
+- 자동 배포 파이프라인
+
+## 📈 모니터링
+
+### 성능 모니터링
+- Core Web Vitals 추적
+- 사용자 경험 메트릭 수집
+
+### 에러 추적
+- 에러 로깅 및 알림
+- 사용자 피드백 수집
+
+## 🤝 기여 가이드
+
+### 개발 가이드라인
+1. TypeScript 사용 필수
+2. ESLint 규칙 준수
+3. 커밋 메시지 컨벤션 준수
+4. 테스트 코드 작성
+
+### 브랜치 전략
+- `main`: 프로덕션 브랜치
+- `develop`: 개발 브랜치
+- `feature/*`: 기능 개발 브랜치
+- `hotfix/*`: 긴급 수정 브랜치
+
+## 📄 라이선스
+
+이 프로젝트는 MIT 라이선스 하에 배포됩니다.
+
+## 👥 팀
+
+- **개발자**: [개발자명]
+- **디자이너**: [디자이너명]
+- **PM**: [PM명]
+
+## 📞 문의
+
+프로젝트에 대한 문의사항이 있으시면 이슈를 생성해주세요.
 

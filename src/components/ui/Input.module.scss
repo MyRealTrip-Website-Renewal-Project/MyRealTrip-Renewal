@@ -1,0 +1,60 @@
+@use '../../styles/variables' as *;
+@use '../../styles/mixins' as *;
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.label {
+  display: block;
+  margin-bottom: $spacing-xs;
+  font-size: $font-size-sm;
+  color: $text-secondary;
+  font-weight: $font-weight-bold;
+}
+.inputBox {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.input {
+  width: 100%;
+  padding: $spacing-sm $spacing-md;
+  border: 1.5px solid $border;
+  border-radius: $radius-md;
+  font-size: $font-size-base;
+  font-family: $font-main;
+  color: $text-primary;
+  background: #fff;
+  transition: border-color 0.18s, box-shadow 0.18s;
+  outline: none;
+  &:focus {
+    border-color: $primary;
+    box-shadow: 0 0 0 2px rgba(33,150,243,0.08);
+  }
+  &.error {
+    border-color: #ffcccc !important;
+    background: #fff6f6;
+  }
+  &.disabled {
+    background: $background-secondary;
+    color: $text-tertiary;
+    cursor: not-allowed;
+  }
+}
+.icon {
+  position: absolute;
+  right: $spacing-md;
+  color: $text-tertiary;
+  font-size: 20px;
+  pointer-events: none;
+}
+.input--left { @include align-left; }
+.input--center { @include align-center; }
+.input--right { @include align-right; }
+.error-message {
+  color: #e53935;
+  font-size: $font-size-xs;
+  margin-top: 4px;
+} 

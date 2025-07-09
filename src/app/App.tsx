@@ -5,6 +5,7 @@ import StickyHeader from '@components/layout/Header';
 import type { Category } from '../types/category';
 import type { SubTab } from '../types/subtab';
 import Splash from '@features/splash/Splash';
+import { Providers } from './Providers';
 
 // 페이지 컴포넌트들을 지연 로딩으로 가져오기
 const Home = lazy(() => import('@features/home/HomePage'));
@@ -33,6 +34,20 @@ const subTabs: SubTab[] = [
   { label: '여행블로그', active: false },
 ];
 
+// 로딩 컴포넌트
+const LoadingSpinner = () => (
+  <div style={{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '100vh',
+    fontSize: '18px',
+    color: '#666'
+  }}>
+    로딩 중...
+  </div>
+);
+
 export default React.memo(function App() {
   const [showSplash, setShowSplash] = useState(true);
 
@@ -45,26 +60,32 @@ export default React.memo(function App() {
   }, []);
 
   if (showSplash) {
-    return <Splash />;
+    return (
+      <Providers>
+        <Splash />
+      </Providers>
+    );
   }
 
   return (
-    <HelmetProvider>
-      <BrowserRouter>
-        <StickyHeader categories={categories} subTabs={subTabs} />
-        <Routes>
-          <Route path="/" element={
-            <Suspense fallback={<div>로딩 중...</div>}>
-              <Home />
-            </Suspense>
-          } />
-          <Route path="/about" element={
-            <Suspense fallback={<div>로딩 중...</div>}>
-              <About />
-            </Suspense>
-          } />
-        </Routes>
-      </BrowserRouter>
-    </HelmetProvider>
+    <Providers>
+      <HelmetProvider>
+        <BrowserRouter>
+          <StickyHeader categories={categories} subTabs={subTabs} />
+          <Routes>
+            <Route path="/" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <Home />
+              </Suspense>
+            } />
+            <Route path="/about" element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <About />
+              </Suspense>
+            } />
+          </Routes>
+        </BrowserRouter>
+      </HelmetProvider>
+    </Providers>
   );
 });

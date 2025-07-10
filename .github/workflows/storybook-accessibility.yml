@@ -1,0 +1,25 @@
+name: Storybook Accessibility Test
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+jobs:
+  storybook-a11y:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'yarn'
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+      - name: Build Storybook
+        run: yarn storybook:build
+      - name: Run Storybook Accessibility Tests
+        run: npx @storybook/test-runner --url http://localhost:6006 --test a11y 

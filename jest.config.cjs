@@ -1,20 +1,12 @@
 module.exports = {
-  preset: 'ts-jest',
   testEnvironment: 'jsdom',
-  moduleNameMapper: {
-    '^@app/(.*)$': '<rootDir>/src/app/$1',
-    '^@features/(.*)$': '<rootDir>/src/features/$1',
-    '^@components/(.*)$': '<rootDir>/src/components/$1',
-    '^@components/common/(.*)$': '<rootDir>/src/components/common/$1',
-    '^@components/layout/(.*)$': '<rootDir>/src/components/layout/$1',
-    '^@components/navigation/(.*)$': '<rootDir>/src/components/navigation/$1',
-    '^@hooks/(.*)$': '<rootDir>/src/hooks/$1',
-    '^@utils/(.*)$': '<rootDir>/src/utils/$1',
-    '^@constants/(.*)$': '<rootDir>/src/constants/$1',
-    '^@types/(.*)$': '<rootDir>/src/types/$1',
-    '^@assets/(.*)$': '<rootDir>/src/assets/$1',
-    '^@styles/(.*)$': '<rootDir>/src/styles/$1',
-    '\\.(css|less|scss|sass)$': 'identity-obj-proxy',
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx'],
+  transform: {
+    '^.+\\.(ts|tsx|js|jsx)$': 'babel-jest',
   },
-  setupFilesAfterEnv: ['@testing-library/jest-dom'],
+  moduleNameMapper: {
+    '\\.(css|scss)$': 'identity-obj-proxy',
+    '^@/(.*)$': '<rootDir>/src/$1',
+  },
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 }; 

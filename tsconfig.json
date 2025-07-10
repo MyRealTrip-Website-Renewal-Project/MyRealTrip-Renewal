@@ -3,9 +3,9 @@
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "allowJs": false,
+    "allowJs": true,
     "skipLibCheck": true,
-    "esModuleInterop": false,
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "strict": true,
     "forceConsistentCasingInFileNames": true,
@@ -15,22 +15,12 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
-      "@app/*": ["app/*"],
-      "@features/*": ["features/*"],
-      "@components/*": ["components/*"],
-      "@components/common/*": ["components/common/*"],
-      "@components/layout/*": ["components/layout/*"],
-      "@components/navigation/*": ["components/navigation/*"],
-      "@hooks/*": ["hooks/*"],
-      "@utils/*": ["utils/*"],
-      "@constants/*": ["constants/*"],
-      "@types/*": ["types/*"],
-      "@assets/*": ["assets/*"],
+      "@/*": ["*"],
       "@styles/*": ["styles/*"]
     }
   },
-  "include": ["src"],
-  "references": [{ "path": "./tsconfig.node.json" }]
-}
+  "include": ["src", ".storybook"],
+  "exclude": ["node_modules", "dist"]
+} 

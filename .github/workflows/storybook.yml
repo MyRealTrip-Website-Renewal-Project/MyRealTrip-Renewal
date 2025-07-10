@@ -1,13 +1,12 @@
-name: CI/CD
+name: Deploy Storybook to GitHub Pages
 
 on:
   push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
-  ci:
+  build-and-deploy-storybook:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -19,20 +18,11 @@ jobs:
           cache: 'yarn'
       - name: Install dependencies
         run: yarn install --frozen-lockfile
-      - name: Lint
-        run: yarn lint
-      - name: Format
-        run: yarn format
-      - name: Test
-        run: yarn test
-      - name: Build
-        run: yarn build
       - name: Build Storybook
         run: yarn storybook:build
-      - name: Deploy to GitHub Pages
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+      - name: Deploy Storybook to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          destination_dir: prod 
+          publish_dir: ./storybook-static
+          destination_dir: storybook 

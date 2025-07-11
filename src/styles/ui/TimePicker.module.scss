@@ -1,0 +1,403 @@
+@import '../variables';
+
+.timePickerContainer {
+  position: relative;
+  width: 100%;
+}
+
+.timePicker {
+  position: relative;
+  width: 100%;
+}
+
+.timePickerTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  line-height: 1.5;
+
+  &:hover:not(.timePickerTriggerDisabled) {
+    border-color: var(--color-gray-400);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+
+  // 크기
+  &--sm {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  &--md {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    background-color: var(--color-white);
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border-width: 2px;
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+    border-color: transparent;
+  }
+
+  // 상태
+  &Open {
+    border-color: var(--color-primary);
+  }
+
+  &Disabled {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-500);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &Error {
+    border-color: var(--color-error);
+    
+    &:focus {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+    }
+  }
+}
+
+.timePickerValue {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.timePickerIcons {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+}
+
+.timePickerClear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 12px;
+  color: var(--color-gray-500);
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-700);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.timePickerClockIcon {
+  font-size: 14px;
+  color: var(--color-gray-500);
+}
+
+.timePickerDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  margin-top: 4px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 8px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: timePickerDropdown 0.2s ease-out;
+  min-width: 320px;
+}
+
+.timePickerContent {
+  display: flex;
+  padding: 16px;
+  gap: 16px;
+}
+
+.timePickerSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.timePickerSectionTitle {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-gray-600);
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.timePickerOptions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4px;
+  max-height: 200px;
+  overflow-y: auto;
+  padding: 4px;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 4px;
+  background-color: var(--color-gray-50);
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--color-gray-100);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: var(--color-gray-300);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gray-400);
+  }
+}
+
+.timePickerOption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px;
+  background: none;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  transition: all 0.15s ease;
+  min-height: 32px;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-200);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+  }
+}
+
+.timePickerOptionSelected {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-weight: 600;
+
+  &:hover {
+    background-color: var(--color-primary-dark);
+  }
+}
+
+.timePickerHelperText {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+
+  &.timePickerHelperTextError {
+    color: var(--color-error);
+  }
+}
+
+// 애니메이션
+@keyframes timePickerDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .timePickerTrigger {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-600);
+    color: var(--color-gray-200);
+
+    &:hover:not(.timePickerTriggerDisabled) {
+      border-color: var(--color-gray-500);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-700);
+    }
+  }
+
+  .timePickerDropdown {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-600);
+  }
+
+  .timePickerSectionTitle {
+    color: var(--color-gray-400);
+  }
+
+  .timePickerOptions {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-700);
+
+    &::-webkit-scrollbar-track {
+      background: var(--color-gray-600);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--color-gray-500);
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: var(--color-gray-400);
+    }
+  }
+
+  .timePickerOption {
+    color: var(--color-gray-300);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-600);
+    }
+
+    &:focus {
+      background-color: var(--color-primary-dark);
+      color: var(--color-white);
+    }
+  }
+
+  .timePickerOptionSelected {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-primary);
+    }
+  }
+
+  .timePickerClear {
+    color: var(--color-gray-400);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-200);
+    }
+  }
+
+  .timePickerClockIcon {
+    color: var(--color-gray-400);
+  }
+
+  .timePickerHelperText {
+    color: var(--color-gray-400);
+
+    &.timePickerHelperTextError {
+      color: var(--color-error-light);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .timePickerTrigger {
+    &--sm {
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    &--md {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    &--lg {
+      padding: 10px 14px;
+      font-size: 15px;
+    }
+  }
+
+  .timePickerDropdown {
+    min-width: 280px;
+  }
+
+  .timePickerContent {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  .timePickerOptions {
+    max-height: 160px;
+  }
+
+  .timePickerOption {
+    padding: 6px 3px;
+    font-size: 13px;
+    min-height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .timePickerDropdown {
+    min-width: 260px;
+  }
+
+  .timePickerContent {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .timePickerOptions {
+    grid-template-columns: repeat(4, 1fr);
+    max-height: 120px;
+  }
+
+  .timePickerOption {
+    padding: 4px 2px;
+    font-size: 12px;
+    min-height: 24px;
+  }
+} 

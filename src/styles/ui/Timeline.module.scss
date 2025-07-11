@@ -1,0 +1,593 @@
+@import '../variables';
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  // 방향
+  &--horizontal {
+    flex-direction: row;
+    gap: 24px;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  // 크기
+  &--sm {
+    gap: 12px;
+
+    &.timeline--horizontal {
+      gap: 20px;
+    }
+  }
+
+  &--md {
+    gap: 16px;
+
+    &.timeline--horizontal {
+      gap: 24px;
+    }
+  }
+
+  &--lg {
+    gap: 20px;
+
+    &.timeline--horizontal {
+      gap: 32px;
+    }
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--outlined {
+    // 아웃라인 스타일
+  }
+
+  &--filled {
+    // 채워진 스타일
+  }
+}
+
+.timelineItemContainer {
+  display: flex;
+  align-items: flex-start;
+  flex: 1;
+
+  .timeline--horizontal & {
+    flex-direction: column;
+    align-items: center;
+    min-width: 120px;
+  }
+}
+
+.timelineItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
+  width: 100%;
+
+  // 크기
+  &--sm {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  &--md {
+    gap: 12px;
+    padding: 12px;
+  }
+
+  &--lg {
+    gap: 16px;
+    padding: 16px;
+  }
+
+  // 변형
+  &--default {
+    background-color: transparent;
+  }
+
+  &--outlined {
+    border: 1px solid var(--color-gray-200);
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+  }
+
+  // 상태
+  &--pending {
+    opacity: 0.7;
+  }
+
+  &--active {
+    background-color: var(--color-primary-light);
+  }
+
+  &--completed {
+    background-color: var(--color-success-light);
+  }
+
+  &--error {
+    background-color: var(--color-error-light);
+  }
+
+  // 상호작용
+  &Clickable {
+    cursor: pointer;
+
+    &:hover:not(.timelineItemDisabled) {
+      background-color: var(--color-gray-100);
+      transform: translateY(-1px);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+  }
+
+  &Disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      background-color: inherit;
+    }
+  }
+}
+
+.timelineIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  // 크기
+  &--sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  &--md {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-600);
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 2px solid var(--color-gray-300);
+    color: var(--color-gray-600);
+  }
+
+  &--filled {
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-700);
+  }
+
+  // 상태
+  &--pending {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-600);
+  }
+
+  &--active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  &--completed {
+    background-color: var(--color-success);
+    color: var(--color-white);
+  }
+
+  &--error {
+    background-color: var(--color-error);
+    color: var(--color-white);
+  }
+}
+
+.timelineContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+
+  // 크기
+  &--sm {
+    gap: 2px;
+  }
+
+  &--md {
+    gap: 4px;
+  }
+
+  &--lg {
+    gap: 6px;
+  }
+}
+
+.timelineTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-900);
+  line-height: 1.4;
+
+  .timelineItem--pending & {
+    color: var(--color-gray-600);
+  }
+
+  .timelineItem--active & {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+
+  .timelineItem--completed & {
+    color: var(--color-success-dark);
+  }
+
+  .timelineItem--error & {
+    color: var(--color-error-dark);
+  }
+
+  // 크기별 폰트 크기
+  .timeline--sm & {
+    font-size: 13px;
+  }
+
+  .timeline--md & {
+    font-size: 14px;
+  }
+
+  .timeline--lg & {
+    font-size: 16px;
+  }
+}
+
+.timelineDescription {
+  font-size: 12px;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+
+  .timelineItem--pending & {
+    color: var(--color-gray-500);
+  }
+
+  .timelineItem--active & {
+    color: var(--color-primary);
+  }
+
+  .timelineItem--completed & {
+    color: var(--color-success);
+  }
+
+  .timelineItem--error & {
+    color: var(--color-error);
+  }
+
+  // 크기별 폰트 크기
+  .timeline--sm & {
+    font-size: 11px;
+  }
+
+  .timeline--md & {
+    font-size: 12px;
+  }
+
+  .timeline--lg & {
+    font-size: 14px;
+  }
+}
+
+.timelineDate {
+  font-size: 11px;
+  color: var(--color-gray-500);
+  font-style: italic;
+
+  .timelineItem--pending & {
+    color: var(--color-gray-400);
+  }
+
+  .timelineItem--active & {
+    color: var(--color-primary);
+  }
+
+  .timelineItem--completed & {
+    color: var(--color-success);
+  }
+
+  .timelineItem--error & {
+    color: var(--color-error);
+  }
+
+  // 크기별 폰트 크기
+  .timeline--sm & {
+    font-size: 10px;
+  }
+
+  .timeline--md & {
+    font-size: 11px;
+  }
+
+  .timeline--lg & {
+    font-size: 12px;
+  }
+}
+
+.timelineConnector {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-height: 20px;
+
+  .timeline--horizontal & {
+    flex-direction: column;
+    min-width: 20px;
+    height: 100%;
+  }
+}
+
+.timelineConnectorLine {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gray-200);
+  transition: all 0.2s ease;
+
+  .timeline--horizontal & {
+    width: 2px;
+    height: 100%;
+  }
+
+  // 완료된 아이템의 연결선
+  .timelineItem--completed + .timelineConnector & {
+    background-color: var(--color-success);
+  }
+
+  // 활성 아이템의 연결선
+  .timelineItem--active + .timelineConnector & {
+    background-color: var(--color-primary);
+  }
+
+  // 오류 아이템의 연결선
+  .timelineItem--error + .timelineConnector & {
+    background-color: var(--color-error);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .timelineItem {
+    &--outlined {
+      border-color: var(--color-gray-600);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-700);
+    }
+
+    &--active {
+      background-color: var(--color-primary-dark);
+    }
+
+    &--completed {
+      background-color: var(--color-success-dark);
+    }
+
+    &--error {
+      background-color: var(--color-error-dark);
+    }
+
+    &Clickable:hover:not(.timelineItemDisabled) {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .timelineIcon {
+    &--default {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-300);
+    }
+
+    &--outlined {
+      border-color: var(--color-gray-500);
+      color: var(--color-gray-400);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-500);
+      color: var(--color-gray-300);
+    }
+
+    &--pending {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-400);
+    }
+
+    &--active {
+      background-color: var(--color-primary-light);
+      color: var(--color-white);
+    }
+
+    &--completed {
+      background-color: var(--color-success-light);
+      color: var(--color-white);
+    }
+
+    &--error {
+      background-color: var(--color-error-light);
+      color: var(--color-white);
+    }
+  }
+
+  .timelineTitle {
+    color: var(--color-gray-200);
+
+    .timelineItem--pending & {
+      color: var(--color-gray-400);
+    }
+
+    .timelineItem--active & {
+      color: var(--color-primary-light);
+    }
+
+    .timelineItem--completed & {
+      color: var(--color-success-light);
+    }
+
+    .timelineItem--error & {
+      color: var(--color-error-light);
+    }
+  }
+
+  .timelineDescription {
+    color: var(--color-gray-400);
+
+    .timelineItem--pending & {
+      color: var(--color-gray-500);
+    }
+
+    .timelineItem--active & {
+      color: var(--color-primary-light);
+    }
+
+    .timelineItem--completed & {
+      color: var(--color-success-light);
+    }
+
+    .timelineItem--error & {
+      color: var(--color-error-light);
+    }
+  }
+
+  .timelineDate {
+    color: var(--color-gray-500);
+
+    .timelineItem--pending & {
+      color: var(--color-gray-400);
+    }
+
+    .timelineItem--active & {
+      color: var(--color-primary-light);
+    }
+
+    .timelineItem--completed & {
+      color: var(--color-success-light);
+    }
+
+    .timelineItem--error & {
+      color: var(--color-error-light);
+    }
+  }
+
+  .timelineConnectorLine {
+    background-color: var(--color-gray-600);
+
+    .timelineItem--completed + .timelineConnector & {
+      background-color: var(--color-success-light);
+    }
+
+    .timelineItem--active + .timelineConnector & {
+      background-color: var(--color-primary-light);
+    }
+
+    .timelineItem--error + .timelineConnector & {
+      background-color: var(--color-error-light);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .timeline {
+    &--horizontal {
+      flex-direction: column;
+      gap: 16px;
+    }
+  }
+
+  .timelineItemContainer {
+    .timeline--horizontal & {
+      flex-direction: row;
+      align-items: flex-start;
+      min-width: auto;
+    }
+  }
+
+  .timelineConnector {
+    .timeline--horizontal & {
+      flex-direction: row;
+      min-width: 20px;
+      height: 100%;
+    }
+  }
+
+  .timelineConnectorLine {
+    .timeline--horizontal & {
+      width: 100%;
+      height: 2px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .timeline {
+    gap: 12px;
+  }
+
+  .timelineItem {
+    gap: 8px;
+    padding: 8px;
+  }
+
+  .timelineIcon {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .timelineTitle {
+    font-size: 13px;
+  }
+
+  .timelineDescription {
+    font-size: 11px;
+  }
+
+  .timelineDate {
+    font-size: 10px;
+  }
+} 

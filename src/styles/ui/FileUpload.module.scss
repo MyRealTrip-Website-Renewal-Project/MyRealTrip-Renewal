@@ -1,0 +1,384 @@
+@import '../variables';
+
+.fileUploadContainer {
+  width: 100%;
+}
+
+.fileUpload {
+  width: 100%;
+}
+
+.fileUploadArea {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 120px;
+  border: 2px dashed var(--color-gray-300);
+  border-radius: 8px;
+  background-color: var(--color-gray-50);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+
+  &:hover:not(.fileUploadDisabled) {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-light);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+
+  // 크기
+  .fileUpload--sm & {
+    min-height: 80px;
+  }
+
+  .fileUpload--md & {
+    min-height: 120px;
+  }
+
+  .fileUpload--lg & {
+    min-height: 160px;
+  }
+
+  // 변형
+  .fileUpload--default & {
+    background-color: var(--color-gray-50);
+  }
+
+  .fileUpload--outlined & {
+    background-color: transparent;
+    border-style: solid;
+  }
+
+  .fileUpload--filled & {
+    background-color: var(--color-gray-100);
+    border-color: transparent;
+  }
+}
+
+.fileUploadDragOver {
+  border-color: var(--color-primary);
+  background-color: var(--color-primary-light);
+  transform: scale(1.02);
+}
+
+.fileUploadDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background-color: var(--color-gray-100);
+
+  &:hover {
+    border-color: var(--color-gray-300);
+    background-color: var(--color-gray-100);
+  }
+}
+
+.fileUploadError {
+  border-color: var(--color-error);
+  background-color: var(--color-error-light);
+
+  &:hover {
+    border-color: var(--color-error);
+    background-color: var(--color-error-light);
+  }
+}
+
+.fileUploadContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 20px;
+  text-align: center;
+}
+
+.fileUploadIcon {
+  font-size: 32px;
+  color: var(--color-gray-400);
+}
+
+.fileUploadText {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.fileUploadTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+}
+
+.fileUploadSubtitle {
+  font-size: 14px;
+  color: var(--color-gray-500);
+}
+
+.fileUploadButton {
+  padding: 8px 16px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-dark);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+.fileUploadInput {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}
+
+.fileList {
+  margin-top: 16px;
+  border-top: 1px solid var(--color-gray-200);
+  padding-top: 16px;
+}
+
+.fileItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 4px;
+  margin-bottom: 8px;
+  transition: all 0.2s ease;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &:hover {
+    border-color: var(--color-gray-300);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.fileInfo {
+  flex: 1;
+  min-width: 0;
+}
+
+.fileName {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-900);
+  margin-bottom: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fileDetails {
+  font-size: 12px;
+  color: var(--color-gray-600);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.fileProgress {
+  color: var(--color-primary);
+  font-weight: 500;
+}
+
+.fileRemove {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--color-gray-500);
+  transition: all 0.2s ease;
+  margin-left: 8px;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-error-light);
+    color: var(--color-error);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.fileUploadHelperText {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+
+  &.fileUploadHelperTextError {
+    color: var(--color-error);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .fileUploadArea {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-800);
+
+    &:hover:not(.fileUploadDisabled) {
+      border-color: var(--color-primary);
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  .fileUploadDragOver {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary-dark);
+  }
+
+  .fileUploadDisabled {
+    background-color: var(--color-gray-700);
+  }
+
+  .fileUploadError {
+    border-color: var(--color-error);
+    background-color: var(--color-error-dark);
+  }
+
+  .fileUploadIcon {
+    color: var(--color-gray-500);
+  }
+
+  .fileUploadTitle {
+    color: var(--color-gray-200);
+  }
+
+  .fileUploadSubtitle {
+    color: var(--color-gray-400);
+  }
+
+  .fileItem {
+    background-color: var(--color-gray-700);
+    border-color: var(--color-gray-600);
+
+    &:hover {
+      border-color: var(--color-gray-500);
+    }
+  }
+
+  .fileName {
+    color: var(--color-gray-200);
+  }
+
+  .fileDetails {
+    color: var(--color-gray-400);
+  }
+
+  .fileRemove {
+    color: var(--color-gray-400);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-error-dark);
+      color: var(--color-error-light);
+    }
+  }
+
+  .fileUploadHelperText {
+    color: var(--color-gray-400);
+
+    &.fileUploadHelperTextError {
+      color: var(--color-error-light);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .fileUploadContent {
+    padding: 16px;
+    gap: 8px;
+  }
+
+  .fileUploadIcon {
+    font-size: 24px;
+  }
+
+  .fileUploadTitle {
+    font-size: 14px;
+  }
+
+  .fileUploadSubtitle {
+    font-size: 12px;
+  }
+
+  .fileUploadButton {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  .fileItem {
+    padding: 8px;
+  }
+
+  .fileName {
+    font-size: 13px;
+  }
+
+  .fileDetails {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fileUploadArea {
+    min-height: 100px;
+  }
+
+  .fileUploadContent {
+    padding: 12px;
+  }
+
+  .fileUploadIcon {
+    font-size: 20px;
+  }
+
+  .fileUploadTitle {
+    font-size: 13px;
+  }
+
+  .fileUploadSubtitle {
+    font-size: 11px;
+  }
+
+  .fileUploadButton {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+} 

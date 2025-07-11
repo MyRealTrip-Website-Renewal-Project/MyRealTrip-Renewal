@@ -1,0 +1,124 @@
+@import '../variables';
+
+.tooltipTrigger {
+  position: relative;
+  display: inline-block;
+  cursor: help;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 1000;
+  max-width: 250px;
+  padding: 8px 12px;
+  background-color: var(--color-gray-900);
+  color: var(--color-white);
+  font-size: 14px;
+  line-height: 1.4;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  pointer-events: none;
+  white-space: nowrap;
+  opacity: 0;
+  transform: scale(0.95);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  animation: tooltipFadeIn 0.2s ease forwards;
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+  }
+}
+
+.tooltipArrow {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+}
+
+// 포지션별 스타일
+.tooltip--top {
+  .tooltipArrow {
+    bottom: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-top-color: var(--color-gray-900);
+  }
+}
+
+.tooltip--bottom {
+  .tooltipArrow {
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-bottom-color: var(--color-gray-900);
+  }
+}
+
+.tooltip--left {
+  .tooltipArrow {
+    right: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-left-color: var(--color-gray-900);
+  }
+}
+
+.tooltip--right {
+  .tooltipArrow {
+    left: -6px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-right-color: var(--color-gray-900);
+  }
+}
+
+// 애니메이션
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .tooltip {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-900);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  .tooltip--top .tooltipArrow {
+    border-top-color: var(--color-gray-100);
+  }
+
+  .tooltip--bottom .tooltipArrow {
+    border-bottom-color: var(--color-gray-100);
+  }
+
+  .tooltip--left .tooltipArrow {
+    border-left-color: var(--color-gray-100);
+  }
+
+  .tooltip--right .tooltipArrow {
+    border-right-color: var(--color-gray-100);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .tooltip {
+    max-width: 200px;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+} 

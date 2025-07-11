@@ -1,0 +1,724 @@
+@import '../variables';
+
+.tabs {
+  width: 100%;
+  font-family: inherit;
+
+  // 타입
+  &--line {
+    // 라인 타입 - 기본
+  }
+
+  &--card {
+    // 카드 타입
+  }
+
+  &--segment {
+    // 세그먼트 타입
+  }
+
+  // 크기
+  &--sm {
+    font-size: 13px;
+  }
+
+  &--md {
+    font-size: 14px;
+  }
+
+  &--lg {
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--outlined {
+    border: 1px solid var(--color-gray-200);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  // 위치
+  &--top {
+    // 기본 위치
+  }
+
+  &--bottom {
+    .tabList {
+      order: 2;
+    }
+    
+    .tabPanels {
+      order: 1;
+    }
+  }
+
+  &--left {
+    display: flex;
+    
+    .tabList {
+      flex-direction: column;
+      border-right: 1px solid var(--color-gray-200);
+      border-bottom: none;
+      min-width: 120px;
+    }
+    
+    .tabPanels {
+      flex: 1;
+    }
+  }
+
+  &--right {
+    display: flex;
+    flex-direction: row-reverse;
+    
+    .tabList {
+      flex-direction: column;
+      border-left: 1px solid var(--color-gray-200);
+      border-bottom: none;
+      min-width: 120px;
+    }
+    
+    .tabPanels {
+      flex: 1;
+    }
+  }
+}
+
+.tabList {
+  display: flex;
+  border-bottom: 1px solid var(--color-gray-200);
+  background-color: var(--color-white);
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  // 타입별 스타일
+  &--line {
+    // 기본 라인 스타일
+  }
+
+  &--card {
+    border-bottom: none;
+    gap: 4px;
+    padding: 8px 8px 0;
+  }
+
+  &--segment {
+    border-bottom: none;
+    background-color: var(--color-gray-100);
+    border-radius: 6px;
+    padding: 4px;
+    gap: 2px;
+  }
+
+  // 크기별 스타일
+  &--sm {
+    .tab {
+      padding: 6px 12px;
+    }
+  }
+
+  &--md {
+    .tab {
+      padding: 8px 16px;
+    }
+  }
+
+  &--lg {
+    .tab {
+      padding: 12px 20px;
+    }
+  }
+
+  // 변형별 스타일
+  &--outlined {
+    border-color: var(--color-gray-300);
+  }
+
+  &--filled {
+    background-color: var(--color-gray-100);
+  }
+
+  // 위치별 스타일
+  &--left,
+  &--right {
+    flex-direction: column;
+    border-bottom: none;
+    min-width: 120px;
+  }
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+  position: relative;
+  white-space: nowrap;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--color-gray-600);
+
+  &:hover:not(.tabDisabled) {
+    color: var(--color-primary);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  // 타입별 스타일
+  &--line {
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+
+    &.tabActive {
+      border-bottom-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+  }
+
+  &--card {
+    border: 1px solid var(--color-gray-200);
+    border-bottom: none;
+    border-radius: 6px 6px 0 0;
+    background-color: var(--color-gray-50);
+
+    &.tabActive {
+      background-color: var(--color-white);
+      border-color: var(--color-primary);
+      color: var(--color-primary);
+    }
+
+    &:hover:not(.tabDisabled) {
+      background-color: var(--color-gray-100);
+    }
+  }
+
+  &--segment {
+    border-radius: 4px;
+    background-color: transparent;
+
+    &.tabActive {
+      background-color: var(--color-white);
+      color: var(--color-primary);
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  // 크기별 스타일
+  &--sm {
+    padding: 6px 12px;
+    font-size: 13px;
+  }
+
+  &--md {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    padding: 12px 20px;
+    font-size: 16px;
+  }
+
+  // 변형별 스타일
+  &--outlined {
+    // outlined 변형 스타일
+  }
+
+  &--filled {
+    // filled 변형 스타일
+  }
+
+  // 위치별 스타일
+  &--left,
+  &--right {
+    justify-content: flex-start;
+    border-bottom: 1px solid var(--color-gray-200);
+    border-right: none;
+    margin-bottom: 0;
+    margin-right: -1px;
+
+    &.tabActive {
+      border-right-color: var(--color-white);
+      background-color: var(--color-white);
+    }
+  }
+
+  // 상태
+  &Active {
+    color: var(--color-primary);
+    font-weight: 500;
+  }
+
+  &Disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    color: var(--color-gray-400);
+
+    &:hover {
+      color: var(--color-gray-400);
+    }
+  }
+}
+
+.tabContent {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: 100%;
+
+  // 크기별 간격
+  &--sm {
+    gap: 4px;
+  }
+
+  &--md {
+    gap: 6px;
+  }
+
+  &--lg {
+    gap: 8px;
+  }
+}
+
+.tabIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  font-size: 14px;
+
+  // 크기별 아이콘 크기
+  .tab--sm & {
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+  }
+
+  .tab--md & {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+
+  .tab--lg & {
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+.tabLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+  line-height: 1.4;
+}
+
+.tabClose {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 14px;
+  color: var(--color-gray-400);
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-600);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  // 크기별 닫기 버튼 크기
+  .tab--sm & {
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+  }
+
+  .tab--md & {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+
+  .tab--lg & {
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+.tabAdd {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px dashed var(--color-gray-300);
+  background: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--color-gray-400);
+  transition: all 0.2s ease;
+  margin-left: 8px;
+
+  &:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  // 크기별 추가 버튼 크기
+  .tabList--sm & {
+    width: 28px;
+    height: 28px;
+    font-size: 16px;
+  }
+
+  .tabList--md & {
+    width: 32px;
+    height: 32px;
+    font-size: 18px;
+  }
+
+  .tabList--lg & {
+    width: 36px;
+    height: 36px;
+    font-size: 20px;
+  }
+}
+
+.tabPanels {
+  flex: 1;
+  background-color: var(--color-white);
+  padding: 16px;
+}
+
+.tabPanel {
+  display: none;
+  width: 100%;
+
+  // 크기별 패딩
+  &--sm {
+    padding: 12px;
+  }
+
+  &--md {
+    padding: 16px;
+  }
+
+  &--lg {
+    padding: 20px;
+  }
+
+  // 상태
+  &Active {
+    display: block;
+  }
+
+  &Animated {
+    animation: tabPanelFadeIn 0.3s ease-out;
+  }
+}
+
+// 애니메이션
+@keyframes tabPanelFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .tabs {
+    &--outlined {
+      border-color: var(--color-gray-600);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-800);
+    }
+  }
+
+  .tabList {
+    border-bottom-color: var(--color-gray-600);
+    background-color: var(--color-gray-800);
+
+    &--card {
+      background-color: var(--color-gray-800);
+    }
+
+    &--segment {
+      background-color: var(--color-gray-700);
+    }
+
+    &--outlined {
+      border-color: var(--color-gray-500);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-700);
+    }
+  }
+
+  .tab {
+    color: var(--color-gray-300);
+
+    &:hover:not(.tabDisabled) {
+      color: var(--color-primary-light);
+    }
+
+    &--line {
+      &.tabActive {
+        border-bottom-color: var(--color-primary);
+        color: var(--color-primary-light);
+      }
+    }
+
+    &--card {
+      border-color: var(--color-gray-600);
+      background-color: var(--color-gray-700);
+
+      &.tabActive {
+        background-color: var(--color-gray-800);
+        border-color: var(--color-primary);
+        color: var(--color-primary-light);
+      }
+
+      &:hover:not(.tabDisabled) {
+        background-color: var(--color-gray-600);
+      }
+    }
+
+    &--segment {
+      &.tabActive {
+        background-color: var(--color-gray-800);
+        color: var(--color-primary-light);
+      }
+    }
+
+    &--left,
+    &--right {
+      border-bottom-color: var(--color-gray-600);
+
+      &.tabActive {
+        border-right-color: var(--color-gray-800);
+        background-color: var(--color-gray-800);
+      }
+    }
+
+    &Disabled {
+      color: var(--color-gray-500);
+
+      &:hover {
+        color: var(--color-gray-500);
+      }
+    }
+  }
+
+  .tabClose {
+    color: var(--color-gray-500);
+
+    &:hover {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-300);
+    }
+  }
+
+  .tabAdd {
+    border-color: var(--color-gray-500);
+    color: var(--color-gray-500);
+
+    &:hover {
+      border-color: var(--color-primary);
+      color: var(--color-primary-light);
+    }
+  }
+
+  .tabPanels {
+    background-color: var(--color-gray-800);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .tabs {
+    &--left,
+    &--right {
+      flex-direction: column;
+
+      .tabList {
+        flex-direction: row;
+        border-right: none;
+        border-bottom: 1px solid var(--color-gray-200);
+        min-width: auto;
+        overflow-x: auto;
+      }
+
+      .tab {
+        border-bottom: 2px solid transparent;
+        border-right: none;
+        margin-bottom: -1px;
+        margin-right: 0;
+
+        &.tabActive {
+          border-bottom-color: var(--color-primary);
+          border-right-color: transparent;
+        }
+      }
+    }
+  }
+
+  .tabList {
+    &--sm {
+      .tab {
+        padding: 4px 8px;
+      }
+    }
+
+    &--md {
+      .tab {
+        padding: 6px 12px;
+      }
+    }
+
+    &--lg {
+      .tab {
+        padding: 8px 16px;
+      }
+    }
+  }
+
+  .tabPanels {
+    &--sm {
+      padding: 8px;
+    }
+
+    &--md {
+      padding: 12px;
+    }
+
+    &--lg {
+      padding: 16px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tabList {
+    &--sm {
+      .tab {
+        padding: 3px 6px;
+      }
+    }
+
+    &--md {
+      .tab {
+        padding: 4px 8px;
+      }
+    }
+
+    &--lg {
+      .tab {
+        padding: 6px 12px;
+      }
+    }
+  }
+
+  .tabContent {
+    &--sm {
+      gap: 2px;
+    }
+
+    &--md {
+      gap: 4px;
+    }
+
+    &--lg {
+      gap: 6px;
+    }
+  }
+
+  .tabIcon {
+    .tab--sm & {
+      width: 12px;
+      height: 12px;
+      font-size: 10px;
+    }
+
+    .tab--md & {
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+    }
+
+    .tab--lg & {
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+    }
+  }
+
+  .tabClose {
+    .tab--sm & {
+      width: 12px;
+      height: 12px;
+      font-size: 10px;
+    }
+
+    .tab--md & {
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+    }
+
+    .tab--lg & {
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+    }
+  }
+} 

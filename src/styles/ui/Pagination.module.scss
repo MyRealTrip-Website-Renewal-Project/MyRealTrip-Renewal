@@ -1,0 +1,266 @@
+@import '../variables';
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  font-size: 14px;
+  color: var(--color-gray-700);
+}
+
+.paginationInfo {
+  flex-shrink: 0;
+  color: var(--color-gray-600);
+  font-size: 13px;
+}
+
+.paginationControls {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.paginationButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  padding: 0 8px;
+  border: 1px solid var(--color-gray-300);
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-50);
+    border-color: var(--color-gray-400);
+    color: var(--color-gray-900);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-gray-100);
+    transform: translateY(1px);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-gray-100);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+.paginationButtonActive {
+  background-color: var(--color-primary-500);
+  border-color: var(--color-primary-500);
+  color: var(--color-white);
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-600);
+    color: var(--color-white);
+  }
+
+  &:active:not(:disabled) {
+    background-color: var(--color-primary-700);
+  }
+}
+
+.paginationButtonPrev,
+.paginationButtonNext {
+  font-size: 16px;
+  font-weight: bold;
+  min-width: 36px;
+}
+
+.paginationEllipsis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 36px;
+  height: 36px;
+  color: var(--color-gray-500);
+  font-weight: 500;
+  user-select: none;
+}
+
+.paginationSizeSelector {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.paginationSizeLabel {
+  font-size: 13px;
+  color: var(--color-gray-600);
+  white-space: nowrap;
+}
+
+.paginationSizeSelect {
+  padding: 6px 8px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: var(--color-gray-400);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary-500);
+    box-shadow: 0 0 0 2px rgba(var(--color-primary-500-rgb), 0.1);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: var(--color-gray-100);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .pagination {
+    color: var(--color-gray-300);
+  }
+
+  .paginationInfo {
+    color: var(--color-gray-400);
+  }
+
+  .paginationButton {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-800);
+    color: var(--color-gray-300);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-700);
+      border-color: var(--color-gray-500);
+      color: var(--color-gray-100);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--color-gray-600);
+    }
+
+    &:disabled {
+      background-color: var(--color-gray-700);
+    }
+  }
+
+  .paginationButtonActive {
+    background-color: var(--color-primary-600);
+    border-color: var(--color-primary-600);
+    color: var(--color-white);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-primary-700);
+      border-color: var(--color-primary-700);
+    }
+
+    &:active:not(:disabled) {
+      background-color: var(--color-primary-800);
+    }
+  }
+
+  .paginationEllipsis {
+    color: var(--color-gray-400);
+  }
+
+  .paginationSizeLabel {
+    color: var(--color-gray-400);
+  }
+
+  .paginationSizeSelect {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-800);
+    color: var(--color-gray-300);
+
+    &:hover:not(:disabled) {
+      border-color: var(--color-gray-500);
+    }
+
+    &:disabled {
+      background-color: var(--color-gray-700);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .pagination {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+
+  .paginationControls {
+    gap: 2px;
+  }
+
+  .paginationButton {
+    min-width: 32px;
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .paginationButtonPrev,
+  .paginationButtonNext {
+    min-width: 32px;
+    font-size: 14px;
+  }
+
+  .paginationEllipsis {
+    min-width: 32px;
+    height: 32px;
+  }
+
+  .paginationSizeSelector {
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .paginationControls {
+    gap: 1px;
+  }
+
+  .paginationButton {
+    min-width: 28px;
+    height: 28px;
+    font-size: 12px;
+    padding: 0 4px;
+  }
+
+  .paginationButtonPrev,
+  .paginationButtonNext {
+    min-width: 28px;
+    font-size: 12px;
+  }
+
+  .paginationEllipsis {
+    min-width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+} 

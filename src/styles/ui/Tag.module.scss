@@ -1,0 +1,237 @@
+@import '../variables';
+
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid transparent;
+  transition: all 0.2s ease;
+
+  // 변형
+  &--default {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-700);
+    border-color: var(--color-gray-200);
+  }
+
+  &--primary {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+    border-color: var(--color-primary);
+  }
+
+  &--secondary {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-800);
+    border-color: var(--color-gray-300);
+  }
+
+  &--success {
+    background-color: var(--color-success-light);
+    color: var(--color-success-dark);
+    border-color: var(--color-success);
+  }
+
+  &--warning {
+    background-color: var(--color-warning-light);
+    color: var(--color-warning-dark);
+    border-color: var(--color-warning);
+  }
+
+  &--error {
+    background-color: var(--color-error-light);
+    color: var(--color-error-dark);
+    border-color: var(--color-error);
+  }
+
+  &--info {
+    background-color: var(--color-info-light);
+    color: var(--color-info-dark);
+    border-color: var(--color-info);
+  }
+
+  // 크기
+  &--sm {
+    padding: 2px 6px;
+    font-size: 11px;
+    gap: 3px;
+
+    .tagClose {
+      font-size: 10px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  &--md {
+    padding: 4px 8px;
+    font-size: 12px;
+    gap: 4px;
+
+    .tagClose {
+      font-size: 12px;
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--lg {
+    padding: 6px 12px;
+    font-size: 14px;
+    gap: 6px;
+
+    .tagClose {
+      font-size: 14px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+.tagClosable {
+  padding-right: 4px;
+}
+
+.tagClickable {
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+.tagDisabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+  }
+}
+
+.tagContent {
+  display: inline-block;
+}
+
+.tagClose {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-weight: bold;
+  line-height: 1;
+  transition: all 0.2s ease;
+  color: inherit;
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .tag {
+    &--default {
+      background-color: var(--color-gray-700);
+      color: var(--color-gray-300);
+      border-color: var(--color-gray-600);
+    }
+
+    &--secondary {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-200);
+      border-color: var(--color-gray-500);
+    }
+  }
+
+  .tagClose {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .tag {
+    &--sm {
+      padding: 1px 4px;
+      font-size: 10px;
+      gap: 2px;
+
+      .tagClose {
+        font-size: 9px;
+        width: 12px;
+        height: 12px;
+      }
+    }
+
+    &--md {
+      padding: 3px 6px;
+      font-size: 11px;
+      gap: 3px;
+
+      .tagClose {
+        font-size: 11px;
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    &--lg {
+      padding: 4px 10px;
+      font-size: 13px;
+      gap: 4px;
+
+      .tagClose {
+        font-size: 13px;
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .tag {
+    &--lg {
+      padding: 3px 8px;
+      font-size: 12px;
+      gap: 3px;
+
+      .tagClose {
+        font-size: 12px;
+        width: 15px;
+        height: 15px;
+      }
+    }
+  }
+} 

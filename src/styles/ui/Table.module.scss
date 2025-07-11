@@ -1,0 +1,506 @@
+@import '../variables';
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: inherit;
+  background-color: var(--color-white);
+
+  // 크기
+  &--sm {
+    font-size: 13px;
+  }
+
+  &--md {
+    font-size: 14px;
+  }
+
+  &--lg {
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--bordered {
+    border: 1px solid var(--color-gray-200);
+
+    .tableCell,
+    .tableHeaderCell {
+      border: 1px solid var(--color-gray-200);
+    }
+  }
+
+  &--striped {
+    .tableRow:nth-child(even) {
+      background-color: var(--color-gray-50);
+    }
+  }
+
+  &--compact {
+    .tableCell,
+    .tableHeaderCell {
+      padding: 4px 8px;
+    }
+  }
+}
+
+.tableHeader {
+  background-color: var(--color-gray-100);
+  border-bottom: 2px solid var(--color-gray-200);
+
+  // 크기
+  &--sm {
+    .tableHeaderCell {
+      padding: 6px 8px;
+    }
+  }
+
+  &--md {
+    .tableHeaderCell {
+      padding: 8px 12px;
+    }
+  }
+
+  &--lg {
+    .tableHeaderCell {
+      padding: 12px 16px;
+    }
+  }
+}
+
+.tableHeaderCell {
+  text-align: left;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-gray-200);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.tableHeaderContent {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.tableHeaderTitle {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tableSortIcon {
+  font-size: 12px;
+  color: var(--color-gray-500);
+  flex-shrink: 0;
+}
+
+.tableFilter {
+  width: 100%;
+  margin-top: 4px;
+  padding: 4px 6px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 2px;
+  font-size: 12px;
+  background-color: var(--color-white);
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 1px rgba(37, 99, 235, 0.2);
+  }
+
+  &::placeholder {
+    color: var(--color-gray-400);
+  }
+}
+
+.tableBody {
+  // 기본 스타일
+}
+
+.tableRow {
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: var(--color-gray-50);
+  }
+
+  &:focus-within {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+}
+
+.tableRowSelected {
+  background-color: var(--color-primary-light) !important;
+
+  &:hover {
+    background-color: var(--color-primary-light) !important;
+  }
+}
+
+.tableRowClickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-gray-100);
+  }
+}
+
+.tableCell {
+  padding: 8px 12px;
+  border-bottom: 1px solid var(--color-gray-100);
+  vertical-align: middle;
+
+  // 크기
+  &--sm {
+    padding: 6px 8px;
+  }
+
+  &--md {
+    padding: 8px 12px;
+  }
+
+  &--lg {
+    padding: 12px 16px;
+  }
+
+  // 정렬
+  &--left {
+    text-align: left;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  // 고정 컬럼
+  &--fixed-left {
+    position: sticky;
+    left: 0;
+    background-color: var(--color-white);
+    z-index: 1;
+    box-shadow: 2px 0 4px rgba(0, 0, 0, 0.1);
+  }
+
+  &--fixed-right {
+    position: sticky;
+    right: 0;
+    background-color: var(--color-white);
+    z-index: 1;
+    box-shadow: -2px 0 4px rgba(0, 0, 0, 0.1);
+  }
+}
+
+.tableLoading {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+.tableEmpty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--color-gray-500);
+  font-style: italic;
+}
+
+// 페이지네이션
+.tablePagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background-color: var(--color-gray-50);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.tablePaginationInfo {
+  color: var(--color-gray-600);
+  font-size: 14px;
+}
+
+.tablePaginationControls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tablePaginationButton {
+  padding: 6px 12px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  color: var(--color-gray-700);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-100);
+    border-color: var(--color-gray-400);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.tablePaginationCurrent {
+  padding: 6px 12px;
+  color: var(--color-gray-600);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+// 체크박스 스타일
+.tableCell input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+.tableHeaderCell input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: var(--color-primary);
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .tableContainer {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .table {
+    background-color: var(--color-gray-800);
+    color: var(--color-gray-100);
+  }
+
+  .tableHeader {
+    background-color: var(--color-gray-700);
+    border-bottom-color: var(--color-gray-600);
+  }
+
+  .tableHeaderCell {
+    color: var(--color-gray-200);
+
+    &:hover {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .tableSortIcon {
+    color: var(--color-gray-400);
+  }
+
+  .tableFilter {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-700);
+    color: var(--color-gray-100);
+
+    &:focus {
+      border-color: var(--color-primary);
+    }
+
+    &::placeholder {
+      color: var(--color-gray-500);
+    }
+  }
+
+  .tableRow {
+    &:hover {
+      background-color: var(--color-gray-700);
+    }
+  }
+
+  .tableRowSelected {
+    background-color: var(--color-primary-dark) !important;
+
+    &:hover {
+      background-color: var(--color-primary-dark) !important;
+    }
+  }
+
+  .tableRowClickable {
+    &:hover {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .tableCell {
+    border-bottom-color: var(--color-gray-600);
+
+    &--fixed-left,
+    &--fixed-right {
+      background-color: var(--color-gray-800);
+    }
+  }
+
+  .tableLoading,
+  .tableEmpty {
+    color: var(--color-gray-400);
+  }
+
+  .tablePagination {
+    background-color: var(--color-gray-700);
+    border-top-color: var(--color-gray-600);
+  }
+
+  .tablePaginationInfo {
+    color: var(--color-gray-300);
+  }
+
+  .tablePaginationButton {
+    border-color: var(--color-gray-600);
+    background-color: var(--color-gray-800);
+    color: var(--color-gray-200);
+
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-600);
+      border-color: var(--color-gray-500);
+    }
+  }
+
+  .tablePaginationCurrent {
+    color: var(--color-gray-300);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .tableContainer {
+    font-size: 12px;
+  }
+
+  .table {
+    &--sm {
+      font-size: 11px;
+    }
+
+    &--md {
+      font-size: 12px;
+    }
+
+    &--lg {
+      font-size: 14px;
+    }
+  }
+
+  .tableHeaderCell {
+    padding: 6px 8px;
+  }
+
+  .tableCell {
+    padding: 6px 8px;
+  }
+
+  .tablePagination {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .tablePaginationControls {
+    justify-content: center;
+  }
+
+  .tableFilter {
+    font-size: 11px;
+    padding: 3px 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .tableHeaderCell {
+    padding: 4px 6px;
+  }
+
+  .tableCell {
+    padding: 4px 6px;
+  }
+
+  .tablePaginationButton {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .tablePaginationCurrent {
+    padding: 4px 8px;
+    font-size: 12px;
+  }
+
+  .tableFilter {
+    font-size: 10px;
+    padding: 2px 3px;
+  }
+}
+
+// 스크롤바 스타일
+.tableContainer::-webkit-scrollbar {
+  height: 8px;
+}
+
+.tableContainer::-webkit-scrollbar-track {
+  background: var(--color-gray-100);
+  border-radius: 4px;
+}
+
+.tableContainer::-webkit-scrollbar-thumb {
+  background: var(--color-gray-300);
+  border-radius: 4px;
+
+  &:hover {
+    background: var(--color-gray-400);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .tableContainer::-webkit-scrollbar-track {
+    background: var(--color-gray-700);
+  }
+
+  .tableContainer::-webkit-scrollbar-thumb {
+    background: var(--color-gray-500);
+
+    &:hover {
+      background: var(--color-gray-400);
+    }
+  }
+} 

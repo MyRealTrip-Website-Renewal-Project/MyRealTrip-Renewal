@@ -1,0 +1,313 @@
+@import '../variables';
+
+.selectContainer {
+  position: relative;
+  width: 100%;
+}
+
+.select {
+  position: relative;
+  width: 100%;
+}
+
+.selectTrigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid var(--color-gray-300);
+  border-radius: 4px;
+  background-color: var(--color-white);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 14px;
+  line-height: 1.5;
+
+  &:hover:not(.selectTriggerDisabled) {
+    border-color: var(--color-gray-400);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.1);
+  }
+
+  // 크기
+  &--sm {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  &--md {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    background-color: var(--color-white);
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border-width: 2px;
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+    border-color: transparent;
+  }
+
+  // 상태
+  &Open {
+    border-color: var(--color-primary);
+  }
+
+  &Disabled {
+    background-color: var(--color-gray-100);
+    color: var(--color-gray-500);
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  &Error {
+    border-color: var(--color-error);
+    
+    &:focus {
+      border-color: var(--color-error);
+      box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.1);
+    }
+  }
+}
+
+.selectValue {
+  flex: 1;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.selectArrow {
+  margin-left: 8px;
+  font-size: 12px;
+  transition: transform 0.2s ease;
+  color: var(--color-gray-500);
+
+  .selectTriggerOpen & {
+    transform: rotate(180deg);
+  }
+}
+
+.selectDropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  margin-top: 4px;
+  background-color: var(--color-white);
+  border: 1px solid var(--color-gray-200);
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  max-height: 200px;
+  overflow-y: auto;
+  animation: selectDropdown 0.2s ease-out;
+}
+
+.selectOptions {
+  list-style: none;
+  margin: 0;
+  padding: 4px 0;
+}
+
+.selectOption {
+  display: flex;
+  align-items: center;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+  font-size: 14px;
+  line-height: 1.5;
+
+  &:hover:not(.selectOptionDisabled) {
+    background-color: var(--color-gray-100);
+  }
+
+  &:focus {
+    outline: none;
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+  }
+
+  // 크기별 패딩 조정
+  .select--sm & {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .select--lg & {
+    padding: 12px 16px;
+    font-size: 16px;
+  }
+}
+
+.selectOptionSelected {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-weight: 500;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+  }
+}
+
+.selectOptionDisabled {
+  color: var(--color-gray-400);
+  cursor: not-allowed;
+  background-color: transparent;
+
+  &:hover {
+    background-color: transparent;
+  }
+}
+
+.selectCheckbox {
+  margin-right: 8px;
+  width: 16px;
+  height: 16px;
+  accent-color: var(--color-primary);
+}
+
+.selectHelperText {
+  margin-top: 4px;
+  font-size: 12px;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+
+  &.selectHelperTextError {
+    color: var(--color-error);
+  }
+}
+
+// 애니메이션
+@keyframes selectDropdown {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .selectTrigger {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-600);
+    color: var(--color-gray-200);
+
+    &:hover:not(.selectTriggerDisabled) {
+      border-color: var(--color-gray-500);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-700);
+    }
+  }
+
+  .selectDropdown {
+    background-color: var(--color-gray-800);
+    border-color: var(--color-gray-600);
+  }
+
+  .selectOption {
+    color: var(--color-gray-200);
+
+    &:hover:not(.selectOptionDisabled) {
+      background-color: var(--color-gray-700);
+    }
+
+    &:focus {
+      background-color: var(--color-primary-dark);
+      color: var(--color-white);
+    }
+  }
+
+  .selectOptionSelected {
+    background-color: var(--color-primary-dark);
+    color: var(--color-white);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  .selectOptionDisabled {
+    color: var(--color-gray-500);
+  }
+
+  .selectHelperText {
+    color: var(--color-gray-400);
+
+    &.selectHelperTextError {
+      color: var(--color-error-light);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .selectTrigger {
+    &--sm {
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    &--md {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    &--lg {
+      padding: 10px 14px;
+      font-size: 15px;
+    }
+  }
+
+  .selectOption {
+    .select--sm & {
+      padding: 5px 8px;
+      font-size: 12px;
+    }
+
+    .select--md & {
+      padding: 6px 10px;
+      font-size: 13px;
+    }
+
+    .select--lg & {
+      padding: 10px 14px;
+      font-size: 15px;
+    }
+  }
+
+  .selectDropdown {
+    max-height: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .selectDropdown {
+    max-height: 160px;
+  }
+} 

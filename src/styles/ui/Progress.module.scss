@@ -1,0 +1,206 @@
+@import '../variables';
+
+.progress {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  &--line {
+    flex-direction: column;
+  }
+
+  &--circle {
+    align-items: center;
+    justify-content: center;
+  }
+
+  &--sm {
+    .progressTrack {
+      height: 6px;
+    }
+  }
+
+  &--md {
+    .progressTrack {
+      height: 8px;
+    }
+  }
+
+  &--lg {
+    .progressTrack {
+      height: 12px;
+    }
+  }
+}
+
+.progressTrack {
+  width: 100%;
+  background-color: var(--color-gray-200);
+  border-radius: 999px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progressBar {
+  height: 100%;
+  background-color: var(--color-primary-500);
+  border-radius: inherit;
+  transition: width 0.3s ease;
+  position: relative;
+
+  &--primary {
+    background-color: var(--color-primary-500);
+  }
+
+  &--success {
+    background-color: var(--color-success-500);
+  }
+
+  &--warning {
+    background-color: var(--color-warning-500);
+  }
+
+  &--error {
+    background-color: var(--color-error-500);
+  }
+
+  &--info {
+    background-color: var(--color-info-500);
+  }
+}
+
+.progressBarAnimated {
+  animation: progressPulse 2s ease-in-out infinite;
+}
+
+.progressBarStriped {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+  animation: progressStriped 1s linear infinite;
+}
+
+.progressLabel {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  text-align: center;
+
+  &--top {
+    order: -1;
+  }
+
+  &--bottom {
+    order: 1;
+  }
+
+  &--inside {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--color-gray-900);
+  }
+}
+
+.progressCircle {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.progressCircleSvg {
+  transform: rotate(-90deg);
+}
+
+.progressCircleTrack {
+  fill: none;
+  stroke: var(--color-gray-200);
+}
+
+.progressCircleLabel {
+  position: absolute;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  text-align: center;
+}
+
+// 애니메이션
+@keyframes progressPulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+@keyframes progressStriped {
+  0% {
+    background-position: 1rem 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .progressTrack {
+    background-color: var(--color-gray-700);
+  }
+
+  .progressLabel {
+    color: var(--color-gray-300);
+
+    &--inside {
+      color: var(--color-gray-100);
+    }
+  }
+
+  .progressCircleTrack {
+    stroke: var(--color-gray-700);
+  }
+
+  .progressCircleLabel {
+    color: var(--color-gray-300);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .progress {
+    gap: 6px;
+  }
+
+  .progressLabel {
+    font-size: 13px;
+  }
+
+  .progressCircleLabel {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .progressLabel {
+    font-size: 12px;
+  }
+
+  .progressCircleLabel {
+    font-size: 11px;
+  }
+} 

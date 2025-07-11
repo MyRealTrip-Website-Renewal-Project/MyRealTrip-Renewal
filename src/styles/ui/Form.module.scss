@@ -1,0 +1,5 @@
+@use '../_form' as *;
+
+.form {
+  @extend %form-base;
+} 

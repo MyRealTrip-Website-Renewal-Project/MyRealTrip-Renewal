@@ -1,0 +1,437 @@
+@import '../variables';
+
+.tree {
+  width: 100%;
+  font-family: inherit;
+
+  // 크기
+  &--sm {
+    font-size: 13px;
+  }
+
+  &--md {
+    font-size: 14px;
+  }
+
+  &--lg {
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--outlined {
+    border: 1px solid var(--color-gray-200);
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+    border-radius: 4px;
+    padding: 8px;
+  }
+}
+
+.treeNodeContainer {
+  width: 100%;
+}
+
+.treeNode {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+
+  &:hover:not(.treeNodeDisabled) {
+    background-color: var(--color-gray-100);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  // 크기
+  &--sm {
+    padding: 3px 6px;
+    min-height: 28px;
+  }
+
+  &--md {
+    padding: 4px 8px;
+    min-height: 32px;
+  }
+
+  &--lg {
+    padding: 6px 12px;
+    min-height: 40px;
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--outlined {
+    border: 1px solid transparent;
+
+    &:hover:not(.treeNodeDisabled) {
+      border-color: var(--color-gray-300);
+    }
+  }
+
+  &--filled {
+    background-color: transparent;
+
+    &:hover:not(.treeNodeDisabled) {
+      background-color: var(--color-gray-200);
+    }
+  }
+
+  // 상태
+  &Selected {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-dark);
+
+    &:hover {
+      background-color: var(--color-primary-light);
+    }
+  }
+
+  &Disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &HasChildren {
+    font-weight: 500;
+  }
+}
+
+.treeNodeContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  position: relative;
+
+  // 크기
+  &--sm {
+    gap: 6px;
+  }
+
+  &--md {
+    gap: 8px;
+  }
+
+  &--lg {
+    gap: 12px;
+  }
+}
+
+.treeNodeLine {
+  position: absolute;
+  left: -12px;
+  top: 50%;
+  width: 8px;
+  height: 1px;
+  background-color: var(--color-gray-300);
+  transform: translateY(-50%);
+}
+
+.treeNodeToggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  &:hover:not(:disabled) {
+    background-color: var(--color-gray-200);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.treeNodeToggleIcon {
+  font-size: 10px;
+  color: var(--color-gray-600);
+  transition: transform 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.treeNodeCheckbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  input[type="checkbox"],
+  input[type="radio"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: var(--color-primary);
+  }
+
+  input[type="checkbox"]:disabled,
+  input[type="radio"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.treeNodeIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  font-size: 14px;
+  color: var(--color-gray-600);
+
+  // 크기별 아이콘 크기
+  .treeNode--sm & {
+    width: 14px;
+    height: 14px;
+    font-size: 12px;
+  }
+
+  .treeNode--md & {
+    width: 16px;
+    height: 16px;
+    font-size: 14px;
+  }
+
+  .treeNode--lg & {
+    width: 18px;
+    height: 18px;
+    font-size: 16px;
+  }
+}
+
+.treeNodeLabel {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: inherit;
+  line-height: 1.4;
+}
+
+.treeNodeChildren {
+  width: 100%;
+  margin-left: 0;
+  padding-left: 0;
+  list-style: none;
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .tree {
+    &--outlined {
+      border-color: var(--color-gray-600);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-800);
+    }
+  }
+
+  .treeNode {
+    &:hover:not(.treeNodeDisabled) {
+      background-color: var(--color-gray-700);
+    }
+
+    &--outlined {
+      &:hover:not(.treeNodeDisabled) {
+        border-color: var(--color-gray-500);
+      }
+    }
+
+    &--filled {
+      &:hover:not(.treeNodeDisabled) {
+        background-color: var(--color-gray-600);
+      }
+    }
+
+    &Selected {
+      background-color: var(--color-primary-dark);
+      color: var(--color-primary-light);
+
+      &:hover {
+        background-color: var(--color-primary-dark);
+      }
+    }
+  }
+
+  .treeNodeLine {
+    background-color: var(--color-gray-500);
+  }
+
+  .treeNodeToggle {
+    &:hover:not(:disabled) {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .treeNodeToggleIcon {
+    color: var(--color-gray-400);
+  }
+
+  .treeNodeIcon {
+    color: var(--color-gray-400);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .treeNode {
+    &--sm {
+      padding: 2px 4px;
+      min-height: 24px;
+    }
+
+    &--md {
+      padding: 3px 6px;
+      min-height: 28px;
+    }
+
+    &--lg {
+      padding: 4px 8px;
+      min-height: 32px;
+    }
+  }
+
+  .treeNodeContent {
+    &--sm {
+      gap: 4px;
+    }
+
+    &--md {
+      gap: 6px;
+    }
+
+    &--lg {
+      gap: 8px;
+    }
+  }
+
+  .treeNodeToggle {
+    width: 14px;
+    height: 14px;
+  }
+
+  .treeNodeToggleIcon {
+    font-size: 8px;
+  }
+
+  .treeNodeCheckbox {
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .treeNodeIcon {
+    .treeNode--sm & {
+      width: 12px;
+      height: 12px;
+      font-size: 10px;
+    }
+
+    .treeNode--md & {
+      width: 14px;
+      height: 14px;
+      font-size: 12px;
+    }
+
+    .treeNode--lg & {
+      width: 16px;
+      height: 16px;
+      font-size: 14px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .treeNode {
+    &--sm {
+      padding: 1px 2px;
+      min-height: 20px;
+    }
+
+    &--md {
+      padding: 2px 4px;
+      min-height: 24px;
+    }
+
+    &--lg {
+      padding: 3px 6px;
+      min-height: 28px;
+    }
+  }
+
+  .treeNodeContent {
+    &--sm {
+      gap: 2px;
+    }
+
+    &--md {
+      gap: 4px;
+    }
+
+    &--lg {
+      gap: 6px;
+    }
+  }
+
+  .treeNodeToggle {
+    width: 12px;
+    height: 12px;
+  }
+
+  .treeNodeToggleIcon {
+    font-size: 6px;
+  }
+
+  .treeNodeCheckbox {
+    input[type="checkbox"],
+    input[type="radio"] {
+      width: 12px;
+      height: 12px;
+    }
+  }
+} 

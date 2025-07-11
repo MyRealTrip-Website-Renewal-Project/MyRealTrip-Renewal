@@ -1,0 +1,150 @@
+@import '../variables';
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--color-gray-600);
+}
+
+.breadcrumbList {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+}
+
+.breadcrumbItem {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+
+  &:last-child {
+    .breadcrumbLink {
+      color: var(--color-gray-900);
+      font-weight: 500;
+      cursor: default;
+      pointer-events: none;
+
+      &:hover {
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.breadcrumbItemEllipsis {
+  .breadcrumbLink {
+    cursor: default;
+    pointer-events: none;
+  }
+}
+
+.breadcrumbLink {
+  display: inline-flex;
+  align-items: center;
+  color: var(--color-gray-600);
+  text-decoration: none;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+  background: none;
+  border: none;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary-600);
+    background-color: var(--color-gray-100);
+    text-decoration: underline;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+
+  &[aria-current="page"] {
+    color: var(--color-gray-900);
+    font-weight: 500;
+    cursor: default;
+    pointer-events: none;
+
+    &:hover {
+      text-decoration: none;
+      background-color: transparent;
+    }
+  }
+}
+
+.breadcrumbSeparator {
+  display: flex;
+  align-items: center;
+  color: var(--color-gray-400);
+  margin: 0 4px;
+  font-size: 12px;
+  user-select: none;
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .breadcrumb {
+    color: var(--color-gray-400);
+  }
+
+  .breadcrumbLink {
+    color: var(--color-gray-400);
+
+    &:hover {
+      color: var(--color-primary-400);
+      background-color: var(--color-gray-700);
+    }
+
+    &[aria-current="page"] {
+      color: var(--color-gray-100);
+    }
+  }
+
+  .breadcrumbItem:last-child .breadcrumbLink {
+    color: var(--color-gray-100);
+  }
+
+  .breadcrumbSeparator {
+    color: var(--color-gray-500);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .breadcrumb {
+    font-size: 13px;
+  }
+
+  .breadcrumbLink {
+    padding: 3px 6px;
+  }
+
+  .breadcrumbSeparator {
+    margin: 0 3px;
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    font-size: 12px;
+  }
+
+  .breadcrumbLink {
+    padding: 2px 4px;
+  }
+
+  .breadcrumbSeparator {
+    margin: 0 2px;
+    font-size: 10px;
+  }
+} 

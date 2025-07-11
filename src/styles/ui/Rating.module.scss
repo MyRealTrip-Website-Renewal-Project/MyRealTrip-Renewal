@@ -1,0 +1,284 @@
+@import '../variables';
+
+.ratingContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.ratingStar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--color-gray-300);
+  padding: 2px;
+
+  &:hover:not(.ratingStarDisabled):not(.ratingStarReadOnly) {
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    border-radius: 2px;
+  }
+
+  // 크기
+  &--sm {
+    font-size: 16px;
+    width: 20px;
+    height: 20px;
+  }
+
+  &--md {
+    font-size: 20px;
+    width: 24px;
+    height: 24px;
+  }
+
+  &--lg {
+    font-size: 24px;
+    width: 28px;
+    height: 28px;
+  }
+
+  // 변형
+  &--default {
+    color: var(--color-gray-300);
+  }
+
+  &--filled {
+    color: var(--color-gray-400);
+  }
+
+  &--outlined {
+    color: var(--color-gray-300);
+    border: 1px solid var(--color-gray-300);
+    border-radius: 2px;
+  }
+}
+
+.ratingStarIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  transition: color 0.2s ease;
+}
+
+.ratingStarHalfIcon {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  color: var(--color-warning);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ratingStarFilled {
+  color: var(--color-warning);
+
+  .ratingStarIcon {
+    color: var(--color-warning);
+  }
+}
+
+.ratingStarHalf {
+  color: var(--color-gray-300);
+
+  .ratingStarIcon {
+    color: var(--color-gray-300);
+  }
+}
+
+.ratingStarEmpty {
+  color: var(--color-gray-300);
+
+  .ratingStarIcon {
+    color: var(--color-gray-300);
+  }
+}
+
+.ratingStarReadOnly {
+  cursor: default;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.ratingStarDisabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+
+  &:hover {
+    transform: none;
+  }
+}
+
+.ratingReadOnly {
+  .ratingStar {
+    cursor: default;
+  }
+}
+
+.ratingDisabled {
+  opacity: 0.6;
+
+  .ratingStar {
+    cursor: not-allowed;
+  }
+}
+
+.ratingValue {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-700);
+  min-width: 40px;
+}
+
+.ratingLabel {
+  font-size: 14px;
+  color: var(--color-gray-600);
+  font-style: italic;
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .ratingStar {
+    &--default {
+      color: var(--color-gray-600);
+    }
+
+    &--filled {
+      color: var(--color-gray-500);
+    }
+
+    &--outlined {
+      color: var(--color-gray-600);
+      border-color: var(--color-gray-600);
+    }
+  }
+
+  .ratingStarFilled {
+    color: var(--color-warning-light);
+
+    .ratingStarIcon {
+      color: var(--color-warning-light);
+    }
+  }
+
+  .ratingStarHalf {
+    color: var(--color-gray-600);
+
+    .ratingStarIcon {
+      color: var(--color-gray-600);
+    }
+  }
+
+  .ratingStarEmpty {
+    color: var(--color-gray-600);
+
+    .ratingStarIcon {
+      color: var(--color-gray-600);
+    }
+  }
+
+  .ratingStarHalfIcon {
+    color: var(--color-warning-light);
+  }
+
+  .ratingValue {
+    color: var(--color-gray-300);
+  }
+
+  .ratingLabel {
+    color: var(--color-gray-400);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .ratingStar {
+    &--sm {
+      font-size: 14px;
+      width: 18px;
+      height: 18px;
+    }
+
+    &--md {
+      font-size: 18px;
+      width: 22px;
+      height: 22px;
+    }
+
+    &--lg {
+      font-size: 22px;
+      width: 26px;
+      height: 26px;
+    }
+  }
+
+  .ratingValue {
+    font-size: 13px;
+  }
+
+  .ratingLabel {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ratingContainer {
+    gap: 6px;
+  }
+
+  .rating {
+    gap: 1px;
+  }
+
+  .ratingStar {
+    &--sm {
+      font-size: 12px;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--md {
+      font-size: 16px;
+      width: 20px;
+      height: 20px;
+    }
+
+    &--lg {
+      font-size: 20px;
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  .ratingValue {
+    font-size: 12px;
+  }
+
+  .ratingLabel {
+    font-size: 12px;
+  }
+} 

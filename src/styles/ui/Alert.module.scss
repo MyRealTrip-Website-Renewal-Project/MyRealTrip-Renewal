@@ -1,0 +1,210 @@
+@import '../variables';
+
+.alert {
+  position: relative;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  line-height: 1.5;
+
+  &--info {
+    background-color: rgba(var(--color-info-500-rgb), 0.1);
+    border-color: var(--color-info-200);
+    color: var(--color-info-800);
+
+    .alertIcon {
+      color: var(--color-info-600);
+    }
+  }
+
+  &--success {
+    background-color: rgba(var(--color-success-500-rgb), 0.1);
+    border-color: var(--color-success-200);
+    color: var(--color-success-800);
+
+    .alertIcon {
+      color: var(--color-success-600);
+    }
+  }
+
+  &--warning {
+    background-color: rgba(var(--color-warning-500-rgb), 0.1);
+    border-color: var(--color-warning-200);
+    color: var(--color-warning-800);
+
+    .alertIcon {
+      color: var(--color-warning-600);
+    }
+  }
+
+  &--error {
+    background-color: rgba(var(--color-error-500-rgb), 0.1);
+    border-color: var(--color-error-200);
+    color: var(--color-error-800);
+
+    .alertIcon {
+      color: var(--color-error-600);
+    }
+  }
+}
+
+.alertContent {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.alertIcon {
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+  margin-top: 2px;
+}
+
+.alertBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.alertTitle {
+  font-weight: 600;
+  margin-bottom: 4px;
+  font-size: 15px;
+}
+
+.alertMessage {
+  color: inherit;
+  opacity: 0.9;
+
+  p {
+    margin: 0 0 8px 0;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  ul, ol {
+    margin: 8px 0;
+    padding-left: 20px;
+  }
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+.alertClose {
+  flex-shrink: 0;
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  opacity: 0.7;
+  transition: opacity 0.2s ease, background-color 0.2s ease;
+
+  &:hover {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-primary-500);
+    outline-offset: 2px;
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .alert {
+    &--info {
+      background-color: rgba(var(--color-info-400-rgb), 0.1);
+      border-color: var(--color-info-700);
+      color: var(--color-info-200);
+
+      .alertIcon {
+        color: var(--color-info-400);
+      }
+    }
+
+    &--success {
+      background-color: rgba(var(--color-success-400-rgb), 0.1);
+      border-color: var(--color-success-700);
+      color: var(--color-success-200);
+
+      .alertIcon {
+        color: var(--color-success-400);
+      }
+    }
+
+    &--warning {
+      background-color: rgba(var(--color-warning-400-rgb), 0.1);
+      border-color: var(--color-warning-700);
+      color: var(--color-warning-200);
+
+      .alertIcon {
+        color: var(--color-warning-400);
+      }
+    }
+
+    &--error {
+      background-color: rgba(var(--color-error-400-rgb), 0.1);
+      border-color: var(--color-error-700);
+      color: var(--color-error-200);
+
+      .alertIcon {
+        color: var(--color-error-400);
+      }
+    }
+  }
+
+  .alertClose {
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .alert {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+
+  .alertIcon {
+    font-size: 16px;
+  }
+
+  .alertTitle {
+    font-size: 14px;
+  }
+
+  .alertClose {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .alertContent {
+    gap: 10px;
+  }
+
+  .alert {
+    padding: 8px 12px;
+  }
+} 

@@ -1,0 +1,5 @@
+@use '../_calendar' as *;
+
+.calendar {
+  @extend %calendar-base;
+} 

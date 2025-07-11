@@ -1,0 +1,14 @@
+@use './_variables' as *;
+@use './_mixins' as *;
+
+%modal-base {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+  padding: 2em;
+  min-width: 320px;
+  max-width: 90vw;
+  max-height: 90vh;
+  font-family: $font-family-base;
+  position: relative;
+} 

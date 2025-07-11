@@ -1,0 +1,127 @@
+@import '../variables';
+
+.skeleton {
+  background-color: var(--color-gray-200);
+  border-radius: 4px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+
+  // 변형
+  &--text {
+    height: 1em;
+    width: 100%;
+  }
+
+  &--circular {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+  }
+
+  &--rectangular {
+    border-radius: 4px;
+  }
+
+  // 애니메이션
+  &--pulse {
+    animation: skeletonPulse 1.5s ease-in-out infinite;
+  }
+
+  &--wave {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.4),
+        transparent
+      );
+      animation: skeletonWave 1.6s infinite;
+    }
+  }
+
+  &--none {
+    animation: none;
+  }
+}
+
+.skeletonText {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  .skeleton {
+    margin-bottom: 4px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}
+
+// 애니메이션 키프레임
+@keyframes skeletonPulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes skeletonWave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .skeleton {
+    background-color: var(--color-gray-700);
+
+    &--wave::after {
+      background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.1),
+        transparent
+      );
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .skeletonText {
+    gap: 6px;
+
+    .skeleton {
+      margin-bottom: 3px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .skeletonText {
+    gap: 4px;
+
+    .skeleton {
+      margin-bottom: 2px;
+    }
+  }
+} 

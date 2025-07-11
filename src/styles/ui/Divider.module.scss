@@ -1,0 +1,152 @@
+@import '../variables';
+
+.divider {
+  background-color: var(--color-gray-300);
+  border: none;
+  margin: 0;
+
+  // 수평 구분선
+  &--horizontal {
+    width: 100%;
+    height: 1px;
+  }
+
+  // 수직 구분선
+  &--vertical {
+    width: 1px;
+    height: 100%;
+    align-self: stretch;
+  }
+
+  // 스타일 변형
+  &--solid {
+    border-style: solid;
+  }
+
+  &--dashed {
+    border-style: dashed;
+  }
+
+  &--dotted {
+    border-style: dotted;
+  }
+
+  // 크기
+  &--sm {
+    &.divider--horizontal {
+      height: 1px;
+    }
+    &.divider--vertical {
+      width: 1px;
+    }
+  }
+
+  &--md {
+    &.divider--horizontal {
+      height: 2px;
+    }
+    &.divider--vertical {
+      width: 2px;
+    }
+  }
+
+  &--lg {
+    &.divider--horizontal {
+      height: 3px;
+    }
+    &.divider--vertical {
+      width: 3px;
+    }
+  }
+
+  // 색상
+  &--default {
+    background-color: var(--color-gray-300);
+  }
+
+  &--primary {
+    background-color: var(--color-primary);
+  }
+
+  &--secondary {
+    background-color: var(--color-gray-500);
+  }
+
+  &--success {
+    background-color: var(--color-success);
+  }
+
+  &--warning {
+    background-color: var(--color-warning);
+  }
+
+  &--error {
+    background-color: var(--color-error);
+  }
+}
+
+.dividerWithText {
+  display: flex;
+  align-items: center;
+  width: 100%;
+
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+    height: 100%;
+  }
+}
+
+.dividerText {
+  padding: 0 16px;
+  font-size: 14px;
+  color: var(--color-gray-600);
+  white-space: nowrap;
+  background-color: var(--color-white);
+
+  .dividerWithText--vertical & {
+    padding: 16px 0;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .divider {
+    &--default {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .dividerText {
+    color: var(--color-gray-400);
+    background-color: var(--color-gray-800);
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .dividerText {
+    padding: 0 12px;
+    font-size: 13px;
+
+    .dividerWithText--vertical & {
+      padding: 12px 0;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .dividerText {
+    padding: 0 8px;
+    font-size: 12px;
+
+    .dividerWithText--vertical & {
+      padding: 8px 0;
+    }
+  }
+} 

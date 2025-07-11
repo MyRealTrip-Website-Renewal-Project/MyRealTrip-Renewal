@@ -1,0 +1,26 @@
+@use '../_button' as *;
+
+.button {
+  @extend %button-base;
+}
+.primary {
+  @extend %button-primary;
+}
+.secondary {
+  @extend %button-secondary;
+}
+.outline {
+  @extend %button-outline;
+}
+.sm {
+  font-size: 0.85rem;
+  padding: 0.25em 1em;
+}
+.md {
+  font-size: 1rem;
+  padding: 0.5em 1.5em;
+}
+.lg {
+  font-size: 1.15rem;
+  padding: 0.75em 2em;
+} 

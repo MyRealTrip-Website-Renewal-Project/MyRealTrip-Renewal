@@ -1,0 +1,21 @@
+@use '../_input' as *;
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25em;
+}
+.label {
+  font-size: 0.95em;
+  color: $color-primary;
+}
+.input {
+  @extend %input-base;
+  &:focus {
+    border-color: $color-secondary;
+  }
+}
+.error {
+  color: #ff3b30;
+  font-size: 0.85em;
+} 

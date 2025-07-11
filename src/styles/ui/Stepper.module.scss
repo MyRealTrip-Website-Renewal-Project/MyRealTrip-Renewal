@@ -1,0 +1,516 @@
+@import '../variables';
+
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+
+  // 방향
+  &--horizontal {
+    flex-direction: row;
+  }
+
+  &--vertical {
+    flex-direction: column;
+  }
+
+  // 크기
+  &--sm {
+    gap: 12px;
+  }
+
+  &--md {
+    gap: 16px;
+  }
+
+  &--lg {
+    gap: 20px;
+  }
+
+  // 변형
+  &--default {
+    // 기본 스타일
+  }
+
+  &--outlined {
+    // 아웃라인 스타일
+  }
+
+  &--filled {
+    // 채워진 스타일
+  }
+}
+
+.stepperStepContainer {
+  display: flex;
+  align-items: center;
+  flex: 1;
+
+  .stepper--vertical & {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.stepperStep {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  cursor: default;
+
+  // 크기
+  &--sm {
+    gap: 8px;
+    padding: 6px;
+  }
+
+  &--md {
+    gap: 12px;
+    padding: 8px;
+  }
+
+  &--lg {
+    gap: 16px;
+    padding: 12px;
+  }
+
+  // 변형
+  &--default {
+    background-color: transparent;
+  }
+
+  &--outlined {
+    border: 1px solid var(--color-gray-200);
+  }
+
+  &--filled {
+    background-color: var(--color-gray-50);
+  }
+
+  // 상태
+  &--pending {
+    opacity: 0.6;
+  }
+
+  &--active {
+    background-color: var(--color-primary-light);
+  }
+
+  &--completed {
+    background-color: var(--color-success-light);
+  }
+
+  &--error {
+    background-color: var(--color-error-light);
+  }
+
+  // 상호작용
+  &Clickable {
+    cursor: pointer;
+
+    &:hover:not(.stepperStepDisabled) {
+      background-color: var(--color-gray-100);
+      transform: translateY(-1px);
+    }
+
+    &:focus {
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+    }
+  }
+
+  &Disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+      background-color: inherit;
+    }
+  }
+}
+
+.stepperIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 600;
+  font-size: 14px;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+
+  // 크기
+  &--sm {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  &--md {
+    width: 32px;
+    height: 32px;
+    font-size: 14px;
+  }
+
+  &--lg {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+  }
+
+  // 변형
+  &--default {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-600);
+  }
+
+  &--outlined {
+    background-color: transparent;
+    border: 2px solid var(--color-gray-300);
+    color: var(--color-gray-600);
+  }
+
+  &--filled {
+    background-color: var(--color-gray-300);
+    color: var(--color-gray-700);
+  }
+
+  // 상태
+  &--pending {
+    background-color: var(--color-gray-200);
+    color: var(--color-gray-600);
+  }
+
+  &--active {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+  }
+
+  &--completed {
+    background-color: var(--color-success);
+    color: var(--color-white);
+  }
+
+  &--error {
+    background-color: var(--color-error);
+    color: var(--color-white);
+  }
+}
+
+.stepperContent {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+
+  // 크기
+  &--sm {
+    gap: 2px;
+  }
+
+  &--md {
+    gap: 4px;
+  }
+
+  &--lg {
+    gap: 6px;
+  }
+}
+
+.stepperTitle {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray-900);
+  line-height: 1.4;
+
+  .stepperStep--pending & {
+    color: var(--color-gray-600);
+  }
+
+  .stepperStep--active & {
+    color: var(--color-primary-dark);
+    font-weight: 600;
+  }
+
+  .stepperStep--completed & {
+    color: var(--color-success-dark);
+  }
+
+  .stepperStep--error & {
+    color: var(--color-error-dark);
+  }
+
+  // 크기별 폰트 크기
+  .stepper--sm & {
+    font-size: 13px;
+  }
+
+  .stepper--md & {
+    font-size: 14px;
+  }
+
+  .stepper--lg & {
+    font-size: 16px;
+  }
+}
+
+.stepperDescription {
+  font-size: 12px;
+  color: var(--color-gray-600);
+  line-height: 1.4;
+
+  .stepperStep--pending & {
+    color: var(--color-gray-500);
+  }
+
+  .stepperStep--active & {
+    color: var(--color-primary);
+  }
+
+  .stepperStep--completed & {
+    color: var(--color-success);
+  }
+
+  .stepperStep--error & {
+    color: var(--color-error);
+  }
+
+  // 크기별 폰트 크기
+  .stepper--sm & {
+    font-size: 11px;
+  }
+
+  .stepper--md & {
+    font-size: 12px;
+  }
+
+  .stepper--lg & {
+    font-size: 14px;
+  }
+}
+
+.stepperConnector {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 20px;
+
+  .stepper--vertical & {
+    flex-direction: column;
+    min-height: 20px;
+    width: 100%;
+  }
+}
+
+.stepperConnectorLine {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gray-200);
+  transition: all 0.2s ease;
+
+  .stepper--vertical & {
+    width: 2px;
+    height: 100%;
+  }
+
+  // 완료된 단계의 연결선
+  .stepperStep--completed + .stepperConnector & {
+    background-color: var(--color-success);
+  }
+
+  // 활성 단계의 연결선
+  .stepperStep--active + .stepperConnector & {
+    background-color: var(--color-primary);
+  }
+
+  // 오류 단계의 연결선
+  .stepperStep--error + .stepperConnector & {
+    background-color: var(--color-error);
+  }
+}
+
+// 다크 테마 지원
+@media (prefers-color-scheme: dark) {
+  .stepperStep {
+    &--outlined {
+      border-color: var(--color-gray-600);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-700);
+    }
+
+    &--active {
+      background-color: var(--color-primary-dark);
+    }
+
+    &--completed {
+      background-color: var(--color-success-dark);
+    }
+
+    &--error {
+      background-color: var(--color-error-dark);
+    }
+
+    &Clickable:hover:not(.stepperStepDisabled) {
+      background-color: var(--color-gray-600);
+    }
+  }
+
+  .stepperIcon {
+    &--default {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-300);
+    }
+
+    &--outlined {
+      border-color: var(--color-gray-500);
+      color: var(--color-gray-400);
+    }
+
+    &--filled {
+      background-color: var(--color-gray-500);
+      color: var(--color-gray-300);
+    }
+
+    &--pending {
+      background-color: var(--color-gray-600);
+      color: var(--color-gray-400);
+    }
+
+    &--active {
+      background-color: var(--color-primary-light);
+      color: var(--color-white);
+    }
+
+    &--completed {
+      background-color: var(--color-success-light);
+      color: var(--color-white);
+    }
+
+    &--error {
+      background-color: var(--color-error-light);
+      color: var(--color-white);
+    }
+  }
+
+  .stepperTitle {
+    color: var(--color-gray-200);
+
+    .stepperStep--pending & {
+      color: var(--color-gray-400);
+    }
+
+    .stepperStep--active & {
+      color: var(--color-primary-light);
+    }
+
+    .stepperStep--completed & {
+      color: var(--color-success-light);
+    }
+
+    .stepperStep--error & {
+      color: var(--color-error-light);
+    }
+  }
+
+  .stepperDescription {
+    color: var(--color-gray-400);
+
+    .stepperStep--pending & {
+      color: var(--color-gray-500);
+    }
+
+    .stepperStep--active & {
+      color: var(--color-primary-light);
+    }
+
+    .stepperStep--completed & {
+      color: var(--color-success-light);
+    }
+
+    .stepperStep--error & {
+      color: var(--color-error-light);
+    }
+  }
+
+  .stepperConnectorLine {
+    background-color: var(--color-gray-600);
+
+    .stepperStep--completed + .stepperConnector & {
+      background-color: var(--color-success-light);
+    }
+
+    .stepperStep--active + .stepperConnector & {
+      background-color: var(--color-primary-light);
+    }
+
+    .stepperStep--error + .stepperConnector & {
+      background-color: var(--color-error-light);
+    }
+  }
+}
+
+// 반응형
+@media (max-width: 768px) {
+  .stepper {
+    &--horizontal {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+
+  .stepperStepContainer {
+    .stepper--horizontal & {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  .stepperConnector {
+    .stepper--horizontal & {
+      flex-direction: column;
+      min-height: 20px;
+      width: 100%;
+    }
+  }
+
+  .stepperConnectorLine {
+    .stepper--horizontal & {
+      width: 2px;
+      height: 100%;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .stepper {
+    gap: 8px;
+  }
+
+  .stepperStep {
+    gap: 8px;
+    padding: 6px;
+  }
+
+  .stepperIcon {
+    width: 24px;
+    height: 24px;
+    font-size: 12px;
+  }
+
+  .stepperTitle {
+    font-size: 13px;
+  }
+
+  .stepperDescription {
+    font-size: 11px;
+  }
+} 
